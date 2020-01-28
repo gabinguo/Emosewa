@@ -1,0 +1,26 @@
+{
+  "emosewaApp": {
+    "option": {
+      "home": {
+        "title": "Options",
+        "createLabel": "Create a new Option",
+        "createOrEditLabel": "Create or edit a Option",
+        "notFound": "No Options found"
+      },
+      "created": "A new Option is created with identifier {{ param }}",
+      "updated": "A Option is updated with identifier {{ param }}",
+      "deleted": "A Option is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Option {{ id }}?"
+      },
+      "detail": {
+        "title": "Option"
+      },
+      "description": "Description",
+      "pictureURL": "Picture URL",
+      "videoURL": "Video URL",
+      "level": "Level",
+      "question": "Question"
+    }
+  }
+}

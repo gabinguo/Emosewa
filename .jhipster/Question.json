@@ -1,0 +1,50 @@
+{
+    "name": "Question",
+    "fields": [
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "pictureURL",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "videoURL",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "questionType",
+            "otherEntityRelationshipName": "question",
+            "relationshipName": "type",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "option",
+            "otherEntityRelationshipName": "question",
+            "relationshipName": "options"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "quiz",
+            "otherEntityRelationshipName": "questions",
+            "relationshipName": "quiz",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200128160941",
+    "entityTableName": "question",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

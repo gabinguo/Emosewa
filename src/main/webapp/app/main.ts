@@ -25,6 +25,13 @@ import AlertService from '@/shared/alert/alert.service';
 import TranslationService from '@/locale/translation.service';
 import ConfigurationService from '@/admin/configuration/configuration.service';
 
+import QuestionService from '@/entities/question/question.service';
+import QuizService from '@/entities/quiz/quiz.service';
+import ReportService from '@/entities/report/report.service';
+import PlayerService from '@/entities/player/player.service';
+import OptionService from '@/entities/option/option.service';
+import QuizTypeService from '@/entities/quiz-type/quiz-type.service';
+import QuestionTypeService from '@/entities/question-type/question-type.service';
 // jhipster-needle-add-entity-service-to-main-import - JHipster will import entities services here
 
 Vue.config.productionTip = false;
@@ -82,6 +89,13 @@ new Vue({
     metricsService: () => new MetricsService(),
     alertService: () => alertService,
     translationService: () => translationService,
+    questionService: () => new QuestionService(),
+    quizService: () => new QuizService(),
+    reportService: () => new ReportService(),
+    playerService: () => new PlayerService(),
+    optionService: () => new OptionService(),
+    quizTypeService: () => new QuizTypeService(),
+    questionTypeService: () => new QuestionTypeService(),
     // jhipster-needle-add-entity-service-to-main - JHipster will import entities services here
     accountService: () => accountService
   },

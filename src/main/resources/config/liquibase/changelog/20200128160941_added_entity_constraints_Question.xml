@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity Question.
+    -->
+    <changeSet id="20200128160941-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="type_id"
+                                 baseTableName="question"
+                                 constraintName="fk_question_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="question_type"/>
+
+        <addForeignKeyConstraint baseColumnNames="quiz_id"
+                                 baseTableName="question"
+                                 constraintName="fk_question_quiz_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="quiz"/>
+
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,24 @@
+{
+  "emosewaApp": {
+    "quiz": {
+      "home": {
+        "title": "Quizzes",
+        "createLabel": "Create a new Quiz",
+        "createOrEditLabel": "Create or edit a Quiz",
+        "notFound": "No Quizzes found"
+      },
+      "created": "A new Quiz is created with identifier {{ param }}",
+      "updated": "A Quiz is updated with identifier {{ param }}",
+      "deleted": "A Quiz is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Quiz {{ id }}?"
+      },
+      "detail": {
+        "title": "Quiz"
+      },
+      "name": "Name",
+      "type": "Type",
+      "questions": "Questions"
+    }
+  }
+}

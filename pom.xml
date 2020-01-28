@@ -616,8 +616,8 @@
                         <driver>com.mysql.cj.jdbc.Driver</driver>
                         <url>jdbc:mysql://localhost:3306/emosewa</url>
                         <defaultSchemaName>emosewa</defaultSchemaName>
-                        <username>root</username>
-                        <password></password>
+                        <username>emosewa</username>
+                        <password>123456</password>
                         <referenceUrl>hibernate:spring:com.emosewa.app.domain?dialect=org.hibernate.dialect.MySQL8Dialect&amp;hibernate.physical_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy&amp;hibernate.implicit_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy</referenceUrl>
                         <verbose>true</verbose>
                         <logging>debug</logging>

@@ -7,6 +7,13 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "数据",
+        "question": "Question",
+        "quiz": "Quiz",
+        "report": "Report",
+        "player": "Player",
+        "option": "Option",
+        "quizType": "Quiz Type",
+        "questionType": "Question Type",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

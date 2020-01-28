@@ -1,0 +1,10 @@
+{
+  "emosewaApp": {
+    "Level": {
+      "null": "",
+      "EASY": "EASY",
+      "MEDIUM": "MEDIUM",
+      "HARD": "HARD"
+    }
+  }
+}

@@ -1,0 +1,51 @@
+entity Question{
+	description String 
+    pictureURL String 
+    videoURL String
+}
+
+entity Quiz{
+	name String
+}
+
+entity Report{
+	name String
+}
+
+entity Player{
+	name String 
+    password String
+    email String
+}
+
+
+enum Level{
+	EASY, MEDIUM, HARD
+}
+
+entity Option{
+	description String
+    pictureURL String
+    videoURL String
+    level Level
+}
+
+entity QuizType{
+	typeName String
+}
+
+entity QuestionType{
+	typeName String
+}
+
+relationship OneToOne{
+	Question{type} to QuestionType,
+    Quiz{type} to QuizType
+  	Report{quiz} to Quiz
+}
+
+relationship OneToMany{
+	Question{options} to Option
+    Quiz{questions} to Question
+    Player{reports} to Report
+}

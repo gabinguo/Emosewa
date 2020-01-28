@@ -1,0 +1,24 @@
+{
+  "emosewaApp": {
+    "report": {
+      "home": {
+        "title": "Reports",
+        "createLabel": "创建新 Report",
+        "createOrEditLabel": "创建或编辑 Report",
+        "notFound": "No Reports found"
+      },
+      "created": "Report {{ param }} 创建成功",
+      "updated": "Report {{ param }} 更新成功",
+      "deleted": "Report {{ param }} 删除成功",
+      "delete": {
+        "question": "你确定要删除 Report {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "Report"
+      },
+      "name": "Name",
+      "quiz": "Quiz",
+      "player": "Player"
+    }
+  }
+}

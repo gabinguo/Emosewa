@@ -1,0 +1,25 @@
+{
+  "emosewaApp": {
+    "player": {
+      "home": {
+        "title": "Players",
+        "createLabel": "创建新 Player",
+        "createOrEditLabel": "创建或编辑 Player",
+        "notFound": "No Players found"
+      },
+      "created": "Player {{ param }} 创建成功",
+      "updated": "Player {{ param }} 更新成功",
+      "deleted": "Player {{ param }} 删除成功",
+      "delete": {
+        "question": "你确定要删除 Player {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "Player"
+      },
+      "name": "Name",
+      "password": "Password",
+      "email": "Email",
+      "reports": "Reports"
+    }
+  }
+}

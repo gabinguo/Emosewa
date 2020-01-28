@@ -1,0 +1,22 @@
+{
+  "emosewaApp": {
+    "quizType": {
+      "home": {
+        "title": "Quiz Types",
+        "createLabel": "创建新 Quiz Type",
+        "createOrEditLabel": "创建或编辑 Quiz Type",
+        "notFound": "No Quiz Types found"
+      },
+      "created": "Quiz Type {{ param }} 创建成功",
+      "updated": "Quiz Type {{ param }} 更新成功",
+      "deleted": "Quiz Type {{ param }} 删除成功",
+      "delete": {
+        "question": "你确定要删除 Quiz Type {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "Quiz Type"
+      },
+      "typeName": "Type Name"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "emosewaApp": {
+    "quizType": {
+      "home": {
+        "title": "Quiz Types",
+        "createLabel": "Create a new Quiz Type",
+        "createOrEditLabel": "Create or edit a Quiz Type",
+        "notFound": "No Quiz Types found"
+      },
+      "created": "A new Quiz Type is created with identifier {{ param }}",
+      "updated": "A Quiz Type is updated with identifier {{ param }}",
+      "deleted": "A Quiz Type is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Quiz Type {{ id }}?"
+      },
+      "detail": {
+        "title": "Quiz Type"
+      },
+      "typeName": "Type Name"
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+    "name": "Quiz",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "quizType",
+            "otherEntityRelationshipName": "quiz",
+            "relationshipName": "type",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "question",
+            "otherEntityRelationshipName": "quiz",
+            "relationshipName": "questions"
+        }
+    ],
+    "changelogDate": "20200128160942",
+    "entityTableName": "quiz",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

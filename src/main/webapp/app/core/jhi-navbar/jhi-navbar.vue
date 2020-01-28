@@ -25,6 +25,34 @@
                         <font-awesome-icon icon="th-list" />
                         <span v-text="$t('global.menu.entities.main')">Entities</span>
                     </span>
+                    <b-dropdown-item to="/question">
+                        <font-awesome-icon icon="asterisk" />
+                        <span v-text="$t('global.menu.entities.question')">Question</span>
+                    </b-dropdown-item>
+                    <b-dropdown-item to="/quiz">
+                        <font-awesome-icon icon="asterisk" />
+                        <span v-text="$t('global.menu.entities.quiz')">Quiz</span>
+                    </b-dropdown-item>
+                    <b-dropdown-item to="/report">
+                        <font-awesome-icon icon="asterisk" />
+                        <span v-text="$t('global.menu.entities.report')">Report</span>
+                    </b-dropdown-item>
+                    <b-dropdown-item to="/player">
+                        <font-awesome-icon icon="asterisk" />
+                        <span v-text="$t('global.menu.entities.player')">Player</span>
+                    </b-dropdown-item>
+                    <b-dropdown-item to="/option">
+                        <font-awesome-icon icon="asterisk" />
+                        <span v-text="$t('global.menu.entities.option')">Option</span>
+                    </b-dropdown-item>
+                    <b-dropdown-item to="/quiz-type">
+                        <font-awesome-icon icon="asterisk" />
+                        <span v-text="$t('global.menu.entities.quizType')">QuizType</span>
+                    </b-dropdown-item>
+                    <b-dropdown-item to="/question-type">
+                        <font-awesome-icon icon="asterisk" />
+                        <span v-text="$t('global.menu.entities.questionType')">QuestionType</span>
+                    </b-dropdown-item>
                     <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
                 </b-nav-item-dropdown>
                 <b-nav-item-dropdown

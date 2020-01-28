@@ -1,0 +1,26 @@
+{
+  "emosewaApp": {
+    "option": {
+      "home": {
+        "title": "Options",
+        "createLabel": "创建新 Option",
+        "createOrEditLabel": "创建或编辑 Option",
+        "notFound": "No Options found"
+      },
+      "created": "Option {{ param }} 创建成功",
+      "updated": "Option {{ param }} 更新成功",
+      "deleted": "Option {{ param }} 删除成功",
+      "delete": {
+        "question": "你确定要删除 Option {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "Option"
+      },
+      "description": "Description",
+      "pictureURL": "Picture URL",
+      "videoURL": "Video URL",
+      "level": "Level",
+      "question": "Question"
+    }
+  }
+}

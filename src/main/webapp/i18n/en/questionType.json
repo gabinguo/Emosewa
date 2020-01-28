@@ -1,0 +1,22 @@
+{
+  "emosewaApp": {
+    "questionType": {
+      "home": {
+        "title": "Question Types",
+        "createLabel": "Create a new Question Type",
+        "createOrEditLabel": "Create or edit a Question Type",
+        "notFound": "No Question Types found"
+      },
+      "created": "A new Question Type is created with identifier {{ param }}",
+      "updated": "A Question Type is updated with identifier {{ param }}",
+      "deleted": "A Question Type is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Question Type {{ id }}?"
+      },
+      "detail": {
+        "title": "Question Type"
+      },
+      "typeName": "Type Name"
+    }
+  }
+}
