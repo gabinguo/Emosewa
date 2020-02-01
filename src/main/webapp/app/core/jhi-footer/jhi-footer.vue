@@ -1,6 +1,8 @@
 <template>
-    <div id="footer" class="footer">
-        <p v-text="$t('footer')">This is your footer</p>
+    <div style="margin: auto; width: 40%;">
+    <div id="footer" style="text-align: center;" class="footer">
+        <p> ---- Team Emosewa ----</p>
+    </div>
     </div>
 </template>
 

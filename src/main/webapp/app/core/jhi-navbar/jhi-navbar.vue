@@ -6,7 +6,7 @@
             </b-navbar-toggle>
             <b-navbar-brand class="logo float-left" b-link to="/">
                 <span class="logo-img"></span>
-                <span v-text="$t('global.title')" class="navbar-title">emosewa</span> <span class="navbar-version">{{version}}</span>
+                <span class="navbar-title">Emosewa-QuizApp</span>
             </b-navbar-brand>
         </div>
         <b-collapse is-nav id="header-tabs">
@@ -19,7 +19,7 @@
                 </b-nav-item>
                 <b-nav-item-dropdown
                     id="entity-menu"
-                    v-if="authenticated"
+                    v-if="hasAnyAuthority('ROLE_ADMIN')"
                     active-class="active" class="pointer">
                     <span slot="button-content" class="navbar-dropdown-menu">
                         <font-awesome-icon icon="th-list" />

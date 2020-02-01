@@ -1,11 +1,15 @@
 import Component from 'vue-class-component';
 import { Inject, Vue } from 'vue-property-decorator';
 import LoginService from '@/account/login.service';
+import LoginForm from '@/account/login-form/login-form.vue';
+import AccountService from '@/account/account.service';
+
 
 @Component
 export default class Home extends Vue {
   @Inject('loginService')
   private loginService: () => LoginService;
+  @Inject('accountService') private accountService: () => AccountService;
 
   public openLogin(): void {
     this.loginService().openLogin((<any>this).$root);
@@ -15,7 +19,13 @@ export default class Home extends Vue {
     return this.$store.getters.authenticated;
   }
 
+  public hasAnyAuthority(authorities: any): boolean {
+    return this.accountService().hasAnyAuthority(authorities);
+  }
+
   public get username(): string {
     return this.$store.getters.account ? this.$store.getters.account.login : '';
   }
 }
+
+
