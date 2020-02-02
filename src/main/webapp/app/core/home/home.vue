@@ -1,27 +1,39 @@
 <template>
 
     <div class="home row" style="margin: auto;">
-    
+
         <div class="quizmenu-container" v-if="hasAnyAuthority('ROLE_USER')">
             <div id="quizzesmenu-title">
                 <span>Choose one quiz</span>
             </div>
             <div id="quizzes-wraper" class="quiz-grid">
-                <button class="btn-quiz">Quiz 1</button>
-                <button class="btn-quiz">Quiz 2</button>
-                <button class="btn-quiz">Quiz 3</button>
-                <button class="btn-quiz">Quiz 4</button>
-                <button class="btn-quiz">Quiz 5</button>
-                <button class="btn-quiz">Quiz 6</button>
-                <button class="btn-quiz">Quiz 7</button>
-                <button class="btn-quiz">Quiz 8</button>
-                <button class="btn-quiz">Quiz 9</button>
+                <button v-for="quiz in displayedQuizzes()":key="quiz.id" class="btn-quiz">
+                    Quiz{{quiz.id}}
+                </button>
+                <button v-for="n in emptyBtnNum":key="n" class="btn-empty"></button>
             </div>
-            <div class="btns-page">
+            <!-- <div class="btns-page">
                 <button class="btn-page"><</button>
                 <button class="btn-page">></button>
+            </div> -->
+            <div class="page-nav">
+            <nav aria-label="Page navigation">
+			<ul class="pagination">
+				<li class="page-item">
+					<button type="button" class="page-link" v-if="page != 1" @click="page--"> < </button>
+				</li>
 
+				<li class="page-item">
+					<button type="button" class="page-link" v-for="pageNumber in pages.slice(page-1, page+5)":key="pageNumber" @click="page = pageNumber"> {{pageNumber}}</button>
+				</li>
+
+				<li class="page-item">
+					<button type="button" @click="page++" v-if="page < pages.length" class="page-link"> > </button>
+				</li>
+			</ul>
+		    </nav>	
             </div>
+            
         </div>
 
         <div class="alert alert-warning" v-if="!authenticated">
@@ -63,6 +75,13 @@
     margin: auto;   
 }
 
+.btn-empty{
+    background-color: white;
+    height: 100px;
+    width: 125px;
+    margin: auto;
+}
+
 .btn-quiz:hover {
     border-color: black;
     box-shadow: 0 0 10px 4px #333333;
@@ -83,6 +102,7 @@
     color: black;
 }
 
+
 .btns-page{
     text-align: right;
 }
@@ -91,4 +111,17 @@
     color: #ABABAB;
     box-shadow: 0 0 10px 2px #333333;
 }
+
+button.page-link{
+    font-size: 20px;
+    color: #29b3ed;
+    font-weight: 500;
+
+    display: inline-block;
+}
+
+.page-nav{
+    float: right;
+}
+
 </style>
