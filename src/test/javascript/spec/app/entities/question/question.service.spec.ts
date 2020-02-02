@@ -4,7 +4,7 @@ import axios from 'axios';
 import * as config from '@/shared/config/config';
 import {} from '@/shared/date/filters';
 import QuestionService from '@/entities/question/question.service';
-import { Question } from '@/shared/model/question.model';
+import { Question, Level } from '@/shared/model/question.model';
 
 const mockedAxios: any = axios;
 jest.mock('axios', () => ({
@@ -21,7 +21,7 @@ describe('Service Tests', () => {
     beforeEach(() => {
       service = new QuestionService();
 
-      elemDefault = new Question(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA');
+      elemDefault = new Question(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', Level.EASY);
     });
 
     describe('Service methods', () => {
@@ -53,7 +53,8 @@ describe('Service Tests', () => {
           {
             description: 'BBBBBB',
             pictureURL: 'BBBBBB',
-            videoURL: 'BBBBBB'
+            videoURL: 'BBBBBB',
+            level: 'BBBBBB'
           },
           elemDefault
         );
@@ -70,7 +71,8 @@ describe('Service Tests', () => {
           {
             description: 'BBBBBB',
             pictureURL: 'BBBBBB',
-            videoURL: 'BBBBBB'
+            videoURL: 'BBBBBB',
+            level: 'BBBBBB'
           },
           elemDefault
         );

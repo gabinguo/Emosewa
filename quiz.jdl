@@ -2,6 +2,7 @@ entity Question{
 	description String 
     pictureURL String 
     videoURL String
+    level Level
 }
 
 entity Quiz{
@@ -20,7 +21,6 @@ entity Option{
 	description String
     pictureURL String
     videoURL String
-    level Level
 }
 
 entity QuizType{

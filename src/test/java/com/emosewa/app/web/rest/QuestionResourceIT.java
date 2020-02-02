@@ -32,6 +32,7 @@ import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+import com.emosewa.app.domain.enumeration.Level;
 /**
  * Integration tests for the {@link QuestionResource} REST controller.
  */
@@ -46,6 +47,9 @@ public class QuestionResourceIT {
 
     private static final String DEFAULT_VIDEO_URL = "AAAAAAAAAA";
     private static final String UPDATED_VIDEO_URL = "BBBBBBBBBB";
+
+    private static final Level DEFAULT_LEVEL = Level.EASY;
+    private static final Level UPDATED_LEVEL = Level.MEDIUM;
 
     @Autowired
     private QuestionRepository questionRepository;
@@ -94,7 +98,8 @@ public class QuestionResourceIT {
         Question question = new Question()
             .description(DEFAULT_DESCRIPTION)
             .pictureURL(DEFAULT_PICTURE_URL)
-            .videoURL(DEFAULT_VIDEO_URL);
+            .videoURL(DEFAULT_VIDEO_URL)
+            .level(DEFAULT_LEVEL);
         return question;
     }
     /**
@@ -107,7 +112,8 @@ public class QuestionResourceIT {
         Question question = new Question()
             .description(UPDATED_DESCRIPTION)
             .pictureURL(UPDATED_PICTURE_URL)
-            .videoURL(UPDATED_VIDEO_URL);
+            .videoURL(UPDATED_VIDEO_URL)
+            .level(UPDATED_LEVEL);
         return question;
     }
 
@@ -134,6 +140,7 @@ public class QuestionResourceIT {
         assertThat(testQuestion.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testQuestion.getPictureURL()).isEqualTo(DEFAULT_PICTURE_URL);
         assertThat(testQuestion.getVideoURL()).isEqualTo(DEFAULT_VIDEO_URL);
+        assertThat(testQuestion.getLevel()).isEqualTo(DEFAULT_LEVEL);
     }
 
     @Test
@@ -169,7 +176,8 @@ public class QuestionResourceIT {
             .andExpect(jsonPath("$.[*].id").value(hasItem(question.getId().intValue())))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)))
             .andExpect(jsonPath("$.[*].pictureURL").value(hasItem(DEFAULT_PICTURE_URL)))
-            .andExpect(jsonPath("$.[*].videoURL").value(hasItem(DEFAULT_VIDEO_URL)));
+            .andExpect(jsonPath("$.[*].videoURL").value(hasItem(DEFAULT_VIDEO_URL)))
+            .andExpect(jsonPath("$.[*].level").value(hasItem(DEFAULT_LEVEL.toString())));
     }
     
     @SuppressWarnings({"unchecked"})
@@ -218,7 +226,8 @@ public class QuestionResourceIT {
             .andExpect(jsonPath("$.id").value(question.getId().intValue()))
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION))
             .andExpect(jsonPath("$.pictureURL").value(DEFAULT_PICTURE_URL))
-            .andExpect(jsonPath("$.videoURL").value(DEFAULT_VIDEO_URL));
+            .andExpect(jsonPath("$.videoURL").value(DEFAULT_VIDEO_URL))
+            .andExpect(jsonPath("$.level").value(DEFAULT_LEVEL.toString()));
     }
 
     @Test
@@ -244,7 +253,8 @@ public class QuestionResourceIT {
         updatedQuestion
             .description(UPDATED_DESCRIPTION)
             .pictureURL(UPDATED_PICTURE_URL)
-            .videoURL(UPDATED_VIDEO_URL);
+            .videoURL(UPDATED_VIDEO_URL)
+            .level(UPDATED_LEVEL);
 
         restQuestionMockMvc.perform(put("/api/questions")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -258,6 +268,7 @@ public class QuestionResourceIT {
         assertThat(testQuestion.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testQuestion.getPictureURL()).isEqualTo(UPDATED_PICTURE_URL);
         assertThat(testQuestion.getVideoURL()).isEqualTo(UPDATED_VIDEO_URL);
+        assertThat(testQuestion.getLevel()).isEqualTo(UPDATED_LEVEL);
     }
 
     @Test

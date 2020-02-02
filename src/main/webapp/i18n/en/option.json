@@ -19,7 +19,6 @@
       "description": "Description",
       "pictureURL": "Picture URL",
       "videoURL": "Video URL",
-      "level": "Level",
       "question": "Question"
     }
   }

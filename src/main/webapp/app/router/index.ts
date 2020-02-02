@@ -37,6 +37,8 @@ const QuizUpdate = () => import('../entities/quiz/quiz-update.vue');
 // prettier-ignore
 const QuizDetails = () => import('../entities/quiz/quiz-details.vue');
 // prettier-ignore
+const QuizQuestions = () => import('../entities/quiz/quiz-questions.vue');
+// prettier-ignore
 const Report = () => import('../entities/report/report.vue');
 // prettier-ignore
 const ReportUpdate = () => import('../entities/report/report-update.vue');
@@ -219,6 +221,12 @@ export default new Router({
       path: '/quiz/:quizId/edit',
       name: 'QuizEdit',
       component: QuizUpdate,
+      meta: { authorities: ['ROLE_USER'] }
+    },
+    {
+      path: '/quiz/:quizId/answer',
+      name: 'QuizQuestions',
+      component: QuizQuestions,
       meta: { authorities: ['ROLE_USER'] }
     },
     {

@@ -27,7 +27,6 @@ import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-import com.emosewa.app.domain.enumeration.Level;
 /**
  * Integration tests for the {@link OptionResource} REST controller.
  */
@@ -42,9 +41,6 @@ public class OptionResourceIT {
 
     private static final String DEFAULT_VIDEO_URL = "AAAAAAAAAA";
     private static final String UPDATED_VIDEO_URL = "BBBBBBBBBB";
-
-    private static final Level DEFAULT_LEVEL = Level.EASY;
-    private static final Level UPDATED_LEVEL = Level.MEDIUM;
 
     @Autowired
     private OptionRepository optionRepository;
@@ -90,8 +86,7 @@ public class OptionResourceIT {
         Option option = new Option()
             .description(DEFAULT_DESCRIPTION)
             .pictureURL(DEFAULT_PICTURE_URL)
-            .videoURL(DEFAULT_VIDEO_URL)
-            .level(DEFAULT_LEVEL);
+            .videoURL(DEFAULT_VIDEO_URL);
         return option;
     }
     /**
@@ -104,8 +99,7 @@ public class OptionResourceIT {
         Option option = new Option()
             .description(UPDATED_DESCRIPTION)
             .pictureURL(UPDATED_PICTURE_URL)
-            .videoURL(UPDATED_VIDEO_URL)
-            .level(UPDATED_LEVEL);
+            .videoURL(UPDATED_VIDEO_URL);
         return option;
     }
 
@@ -132,7 +126,6 @@ public class OptionResourceIT {
         assertThat(testOption.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testOption.getPictureURL()).isEqualTo(DEFAULT_PICTURE_URL);
         assertThat(testOption.getVideoURL()).isEqualTo(DEFAULT_VIDEO_URL);
-        assertThat(testOption.getLevel()).isEqualTo(DEFAULT_LEVEL);
     }
 
     @Test
@@ -168,8 +161,7 @@ public class OptionResourceIT {
             .andExpect(jsonPath("$.[*].id").value(hasItem(option.getId().intValue())))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)))
             .andExpect(jsonPath("$.[*].pictureURL").value(hasItem(DEFAULT_PICTURE_URL)))
-            .andExpect(jsonPath("$.[*].videoURL").value(hasItem(DEFAULT_VIDEO_URL)))
-            .andExpect(jsonPath("$.[*].level").value(hasItem(DEFAULT_LEVEL.toString())));
+            .andExpect(jsonPath("$.[*].videoURL").value(hasItem(DEFAULT_VIDEO_URL)));
     }
     
     @Test
@@ -185,8 +177,7 @@ public class OptionResourceIT {
             .andExpect(jsonPath("$.id").value(option.getId().intValue()))
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION))
             .andExpect(jsonPath("$.pictureURL").value(DEFAULT_PICTURE_URL))
-            .andExpect(jsonPath("$.videoURL").value(DEFAULT_VIDEO_URL))
-            .andExpect(jsonPath("$.level").value(DEFAULT_LEVEL.toString()));
+            .andExpect(jsonPath("$.videoURL").value(DEFAULT_VIDEO_URL));
     }
 
     @Test
@@ -212,8 +203,7 @@ public class OptionResourceIT {
         updatedOption
             .description(UPDATED_DESCRIPTION)
             .pictureURL(UPDATED_PICTURE_URL)
-            .videoURL(UPDATED_VIDEO_URL)
-            .level(UPDATED_LEVEL);
+            .videoURL(UPDATED_VIDEO_URL);
 
         restOptionMockMvc.perform(put("/api/options")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -227,7 +217,6 @@ public class OptionResourceIT {
         assertThat(testOption.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testOption.getPictureURL()).isEqualTo(UPDATED_PICTURE_URL);
         assertThat(testOption.getVideoURL()).isEqualTo(UPDATED_VIDEO_URL);
-        assertThat(testOption.getLevel()).isEqualTo(UPDATED_LEVEL);
     }
 
     @Test

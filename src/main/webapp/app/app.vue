@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <ribbon></ribbon>
     <div id="app-header">
       <jhi-navbar></jhi-navbar>
     </div>

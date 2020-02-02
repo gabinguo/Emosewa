@@ -23,6 +23,12 @@
                         <span>{{question.videoURL}}</span>
                     </dd>
                     <dt>
+                        <span v-text="$t('emosewaApp.question.level')">Level</span>
+                    </dt>
+                    <dd>
+                        <span v-text="$t('emosewaApp.Level.' + question.level)">{{question.level}}</span>
+                    </dd>
+                    <dt>
                         <span v-text="$t('emosewaApp.question.type')">Type</span>
                     </dt>
                     <dd>

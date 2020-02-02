@@ -25,9 +25,6 @@
             <column name="video_url" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="level" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
     </changeSet>
@@ -54,7 +51,6 @@
             <column name="description" type="string"/>
             <column name="picture_url" type="string"/>
             <column name="video_url" type="string"/>
-            <column name="level" type="string"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here, do not remove-->
         </loadData>
     </changeSet>

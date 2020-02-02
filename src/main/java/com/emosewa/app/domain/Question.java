@@ -10,6 +10,8 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.emosewa.app.domain.enumeration.Level;
+
 /**
  * A Question.
  */
@@ -32,6 +34,10 @@ public class Question implements Serializable {
 
     @Column(name = "video_url")
     private String videoURL;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "level")
+    private Level level;
 
     @ManyToOne
     @JsonIgnoreProperties("questions")
@@ -95,6 +101,19 @@ public class Question implements Serializable {
 
     public void setVideoURL(String videoURL) {
         this.videoURL = videoURL;
+    }
+
+    public Level getLevel() {
+        return level;
+    }
+
+    public Question level(Level level) {
+        this.level = level;
+        return this;
+    }
+
+    public void setLevel(Level level) {
+        this.level = level;
     }
 
     public QuestionType getType() {
@@ -184,6 +203,7 @@ public class Question implements Serializable {
             ", description='" + getDescription() + "'" +
             ", pictureURL='" + getPictureURL() + "'" +
             ", videoURL='" + getVideoURL() + "'" +
+            ", level='" + getLevel() + "'" +
             "}";
     }
 }

@@ -19,7 +19,8 @@ const validations: any = {
   question: {
     description: {},
     pictureURL: {},
-    videoURL: {}
+    videoURL: {},
+    level: {}
   }
 };
 

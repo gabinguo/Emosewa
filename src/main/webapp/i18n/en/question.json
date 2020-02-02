@@ -19,6 +19,7 @@
       "description": "Description",
       "pictureURL": "Picture URL",
       "videoURL": "Video URL",
+      "level": "Level",
       "type": "Type",
       "options": "Options",
       "quiz": "Quiz"

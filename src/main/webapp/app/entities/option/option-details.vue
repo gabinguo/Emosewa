@@ -22,12 +22,6 @@
                     <dd>
                         <span>{{option.videoURL}}</span>
                     </dd>
-                    <dt>
-                        <span v-text="$t('emosewaApp.option.level')">Level</span>
-                    </dt>
-                    <dd>
-                        <span v-text="$t('emosewaApp.Level.' + option.level)">{{option.level}}</span>
-                    </dd>
                 </dl>
                 <button type="submit"
                         v-on:click.prevent="previousState()"

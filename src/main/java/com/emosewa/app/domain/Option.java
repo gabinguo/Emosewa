@@ -9,8 +9,6 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-import com.emosewa.app.domain.enumeration.Level;
-
 /**
  * A Option.
  */
@@ -33,10 +31,6 @@ public class Option implements Serializable {
 
     @Column(name = "video_url")
     private String videoURL;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "level")
-    private Level level;
 
     @ManyToMany(mappedBy = "options")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -91,19 +85,6 @@ public class Option implements Serializable {
         this.videoURL = videoURL;
     }
 
-    public Level getLevel() {
-        return level;
-    }
-
-    public Option level(Level level) {
-        this.level = level;
-        return this;
-    }
-
-    public void setLevel(Level level) {
-        this.level = level;
-    }
-
     public Set<Question> getQuestions() {
         return questions;
     }
@@ -153,7 +134,6 @@ public class Option implements Serializable {
             ", description='" + getDescription() + "'" +
             ", pictureURL='" + getPictureURL() + "'" +
             ", videoURL='" + getVideoURL() + "'" +
-            ", level='" + getLevel() + "'" +
             "}";
     }
 }

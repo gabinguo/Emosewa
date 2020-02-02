@@ -25,6 +25,14 @@
                             :class="{'valid': !$v.question.videoURL.$invalid, 'invalid': $v.question.videoURL.$invalid }" v-model="$v.question.videoURL.$model" />
                     </div>
                     <div class="form-group">
+                        <label class="form-control-label" v-text="$t('emosewaApp.question.level')" for="question-level">Level</label>
+                        <select class="form-control" name="level" :class="{'valid': !$v.question.level.$invalid, 'invalid': $v.question.level.$invalid }" v-model="$v.question.level.$model" id="question-level" >
+                            <option value="EASY" v-bind:label="$t('emosewaApp.Level.EASY')">EASY</option>
+                            <option value="MEDIUM" v-bind:label="$t('emosewaApp.Level.MEDIUM')">MEDIUM</option>
+                            <option value="HARD" v-bind:label="$t('emosewaApp.Level.HARD')">HARD</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label class="form-control-label" v-bind:value="$t('emosewaApp.question.type')" for="question-type">Type</label>
                         <select class="form-control" id="question-type" name="type" v-model="question.type">
                             <option v-bind:value="null"></option>

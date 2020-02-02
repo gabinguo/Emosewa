@@ -24,14 +24,6 @@
                         <input type="text" class="form-control" name="videoURL" id="option-videoURL"
                             :class="{'valid': !$v.option.videoURL.$invalid, 'invalid': $v.option.videoURL.$invalid }" v-model="$v.option.videoURL.$model" />
                     </div>
-                    <div class="form-group">
-                        <label class="form-control-label" v-text="$t('emosewaApp.option.level')" for="option-level">Level</label>
-                        <select class="form-control" name="level" :class="{'valid': !$v.option.level.$invalid, 'invalid': $v.option.level.$invalid }" v-model="$v.option.level.$model" id="option-level" >
-                            <option value="EASY" v-bind:label="$t('emosewaApp.Level.EASY')">EASY</option>
-                            <option value="MEDIUM" v-bind:label="$t('emosewaApp.Level.MEDIUM')">MEDIUM</option>
-                            <option value="HARD" v-bind:label="$t('emosewaApp.Level.HARD')">HARD</option>
-                        </select>
-                    </div>
                 </div>
                 <div>
                     <button type="button" id="cancel-save" class="btn btn-secondary" v-on:click="previousState()">

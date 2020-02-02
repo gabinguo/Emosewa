@@ -13,8 +13,7 @@ const validations: any = {
   option: {
     description: {},
     pictureURL: {},
-    videoURL: {},
-    level: {}
+    videoURL: {}
   }
 };
 

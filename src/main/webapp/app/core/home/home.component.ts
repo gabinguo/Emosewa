@@ -17,39 +17,36 @@ export default class Home extends Vue {
   public page = 1;
   public emptyBtnNum = 0;
 
-
   @Inject('loginService')
   private loginService: () => LoginService;
   @Inject('accountService') private accountService: () => AccountService;
 
   @Watch('quizzes')
-  public setPages (){
+  public setPages() {
     let numberOfPages = Math.ceil(this.quizzes.length / this.perPage);
-    for(let index = 1; index <= numberOfPages; index++){
+    for (let index = 1; index <= numberOfPages; index++) {
       this.pages.push(index);
     }
   }
 
   @Watch('page')
-  public modifyEmptyBtnNum(){
-    if(this.page * this.perPage - this.quizzes.length < 0){
+  public modifyEmptyBtnNum() {
+    if (this.page * this.perPage - this.quizzes.length < 0) {
       this.emptyBtnNum = 0;
-    }else {
+    } else {
       this.emptyBtnNum = this.page * this.perPage - this.quizzes.length;
     }
-
-
   }
 
-  public paginate(quizzes): IQuiz[]{
+  public paginate(quizzes): IQuiz[] {
     let page = this.page;
     let perPage = this.perPage;
-    let from = (page * perPage) - perPage;
-    let to = (page * perPage);
+    let from = page * perPage - perPage;
+    let to = page * perPage;
     return quizzes.slice(from, to);
   }
 
-  public displayedQuizzes(): IQuiz[]{
+  public displayedQuizzes(): IQuiz[] {
     return this.paginate(this.quizzes);
   }
 
@@ -68,8 +65,6 @@ export default class Home extends Vue {
   public get username(): string {
     return this.$store.getters.account ? this.$store.getters.account.login : '';
   }
-
-  
 
   public mounted(): void {
     this.retrieveAllQuizs();
@@ -94,7 +89,4 @@ export default class Home extends Vue {
         }
       );
   }
-
 }
-
-

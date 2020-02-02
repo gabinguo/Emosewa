@@ -28,6 +28,7 @@
                     <th><span v-text="$t('emosewaApp.question.description')">Description</span></th>
                     <th><span v-text="$t('emosewaApp.question.pictureURL')">Picture URL</span></th>
                     <th><span v-text="$t('emosewaApp.question.videoURL')">Video URL</span></th>
+                    <th><span v-text="$t('emosewaApp.question.level')">Level</span></th>
                     <th><span v-text="$t('emosewaApp.question.type')">Type</span></th>
                     <th><span v-text="$t('emosewaApp.question.options')">Options</span></th>
                     <th></th>
@@ -42,6 +43,7 @@
                     <td>{{question.description}}</td>
                     <td>{{question.pictureURL}}</td>
                     <td>{{question.videoURL}}</td>
+                    <td v-text="$t('emosewaApp.Level.' + question.level)">{{question.level}}</td>
                     <td>
                         <div v-if="question.type">
                             <router-link :to="{name: 'QuestionTypeView', params: {questionTypeId: question.type.id}}">{{question.type.typeName}}</router-link>

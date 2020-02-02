@@ -12,11 +12,6 @@
         {
             "fieldName": "videoURL",
             "fieldType": "String"
-        },
-        {
-            "fieldName": "level",
-            "fieldType": "Level",
-            "fieldValues": "EASY,MEDIUM,HARD"
         }
     ],
     "relationships": [

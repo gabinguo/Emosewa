@@ -7,9 +7,11 @@
                 <span>Choose one quiz</span>
             </div>
             <div id="quizzes-wraper" class="quiz-grid">
-                <button v-for="quiz in displayedQuizzes()":key="quiz.id" class="btn-quiz">
+                <router-link :to="{ name: 'QuizQuestions', params: {quizId: quiz.id}}" v-for="quiz in displayedQuizzes()":key="quiz.id">
+                    <button class="btn-quiz">
                     Quiz{{quiz.id}}
-                </button>
+                    </button>
+                </router-link>
                 <button v-for="n in emptyBtnNum":key="n" class="btn-empty"></button>
             </div>
             <!-- <div class="btns-page">
