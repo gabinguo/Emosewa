@@ -14,5 +14,17 @@
                                  referencedColumnNames="id"
                                  referencedTableName="quiz_type"/>
 
+        <addForeignKeyConstraint baseColumnNames="quiz_id"
+                                 baseTableName="quiz_questions"
+                                 constraintName="fk_quiz_questions_quiz_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="quiz"/>
+
+        <addForeignKeyConstraint baseColumnNames="questions_id"
+                                 baseTableName="quiz_questions"
+                                 constraintName="fk_quiz_questions_questions_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="question"/>
+        
     </changeSet>
 </databaseChangeLog>

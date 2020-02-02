@@ -9,9 +9,7 @@ import ReportUpdateComponent from '@/entities/report/report-update.vue';
 import ReportClass from '@/entities/report/report-update.component';
 import ReportService from '@/entities/report/report.service';
 
-import QuizService from '@/entities/quiz/quiz.service';
-
-import PlayerService from '@/entities/player/player.service';
+import UserService from '@/admin/user-management/user-management.service';
 
 const localVue = createLocalVue();
 
@@ -40,9 +38,7 @@ describe('Component Tests', () => {
           alertService: () => new AlertService(store),
           reportService: () => reportServiceStub,
 
-          quizService: () => new QuizService(),
-
-          playerService: () => new PlayerService()
+          userService: () => new UserService()
         }
       });
       comp = wrapper.vm;

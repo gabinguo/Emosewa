@@ -19,10 +19,7 @@
             <column name="name" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="quiz_id" type="bigint">
-                <constraints unique="true" nullable="true" uniqueConstraintName="ux_report_quiz_id" />
-            </column>
-            <column name="player_id" type="bigint">
+            <column name="user_id" type="bigint">
                 <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->

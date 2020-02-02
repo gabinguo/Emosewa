@@ -21,11 +21,12 @@
     ],
     "relationships": [
         {
-            "relationshipType": "many-to-one",
+            "relationshipType": "many-to-many",
             "otherEntityName": "question",
             "otherEntityRelationshipName": "options",
             "relationshipName": "question",
-            "otherEntityField": "id"
+            "otherEntityField": "id",
+            "ownerSide": false
         }
     ],
     "changelogDate": "20200128160945",

@@ -27,6 +27,7 @@
                     <th><span v-text="$t('global.field.id')">ID</span></th>
                     <th><span v-text="$t('emosewaApp.quiz.name')">Name</span></th>
                     <th><span v-text="$t('emosewaApp.quiz.type')">Type</span></th>
+                    <th><span v-text="$t('emosewaApp.quiz.questions')">Questions</span></th>
                     <th></th>
                 </tr>
                 </thead>
@@ -41,6 +42,11 @@
                         <div v-if="quiz.type">
                             <router-link :to="{name: 'QuizTypeView', params: {quizTypeId: quiz.type.id}}">{{quiz.type.id}}</router-link>
                         </div>
+                    </td>
+                    <td>
+                        <span v-for="(questions, i) in quiz.questions" :key="questions.id">{{i > 0 ? ', ' : ''}}
+                            <router-link class="form-control-static" :to="{name: 'QuestionView', params: {questionId: questions.id}}">{{questions.description}}</router-link>
+                        </span>
                     </td>
                     <td class="text-right">
                         <div class="btn-group">

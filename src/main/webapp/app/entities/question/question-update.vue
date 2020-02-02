@@ -32,10 +32,9 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label class="form-control-label" v-bind:value="$t('emosewaApp.question.quiz')" for="question-quiz">Quiz</label>
-                        <select class="form-control" id="question-quiz" name="quiz" v-model="question.quiz">
-                            <option v-bind:value="null"></option>
-                            <option v-bind:value="question.quiz && quizOption.id === question.quiz.id ? question.quiz : quizOption" v-for="quizOption in quizzes" :key="quizOption.id">{{quizOption.id}}</option>
+                        <label v-text="$t('emosewaApp.question.options')" for="question-options">Options</label>
+                        <select class="form-control" id="question-options" multiple name="options" v-model="question.options">
+                            <option v-bind:value="getSelected(question.options, optionOption)" v-for="optionOption in options" :key="optionOption.id">{{optionOption.description}}</option>
                         </select>
                     </div>
                 </div>

@@ -50,11 +50,11 @@ public class CacheConfiguration {
             createCache(cm, com.emosewa.app.domain.Quiz.class.getName());
             createCache(cm, com.emosewa.app.domain.Quiz.class.getName() + ".questions");
             createCache(cm, com.emosewa.app.domain.Report.class.getName());
-            createCache(cm, com.emosewa.app.domain.Player.class.getName());
-            createCache(cm, com.emosewa.app.domain.Player.class.getName() + ".reports");
             createCache(cm, com.emosewa.app.domain.Option.class.getName());
             createCache(cm, com.emosewa.app.domain.QuizType.class.getName());
             createCache(cm, com.emosewa.app.domain.QuestionType.class.getName());
+            createCache(cm, com.emosewa.app.domain.Question.class.getName() + ".quizzes");
+            createCache(cm, com.emosewa.app.domain.Option.class.getName() + ".questions");
             // jhipster-needle-ehcache-add-entry
         };
     }

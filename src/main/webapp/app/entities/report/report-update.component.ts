@@ -2,11 +2,7 @@ import { Component, Vue, Inject } from 'vue-property-decorator';
 
 import { numeric, required, minLength, maxLength } from 'vuelidate/lib/validators';
 
-import QuizService from '../quiz/quiz.service';
-import { IQuiz } from '@/shared/model/quiz.model';
-
-import PlayerService from '../player/player.service';
-import { IPlayer } from '@/shared/model/player.model';
+import UserService from '@/admin/user-management/user-management.service';
 
 import AlertService from '@/shared/alert/alert.service';
 import { IReport, Report } from '@/shared/model/report.model';
@@ -26,13 +22,9 @@ export default class ReportUpdate extends Vue {
   @Inject('reportService') private reportService: () => ReportService;
   public report: IReport = new Report();
 
-  @Inject('quizService') private quizService: () => QuizService;
+  @Inject('userService') private userService: () => UserService;
 
-  public quizzes: IQuiz[] = [];
-
-  @Inject('playerService') private playerService: () => PlayerService;
-
-  public players: IPlayer[] = [];
+  public users: Array<any> = [];
   public isSaving = false;
 
   beforeRouteEnter(to, from, next) {
@@ -80,15 +72,10 @@ export default class ReportUpdate extends Vue {
   }
 
   public initRelationships(): void {
-    this.quizService()
+    this.userService()
       .retrieve()
       .then(res => {
-        this.quizzes = res.data;
-      });
-    this.playerService()
-      .retrieve()
-      .then(res => {
-        this.players = res.data;
+        this.users = res.data;
       });
   }
 }

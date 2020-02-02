@@ -43,12 +43,6 @@ const ReportUpdate = () => import('../entities/report/report-update.vue');
 // prettier-ignore
 const ReportDetails = () => import('../entities/report/report-details.vue');
 // prettier-ignore
-const Player = () => import('../entities/player/player.vue');
-// prettier-ignore
-const PlayerUpdate = () => import('../entities/player/player-update.vue');
-// prettier-ignore
-const PlayerDetails = () => import('../entities/player/player-details.vue');
-// prettier-ignore
 const Option = () => import('../entities/option/option.vue');
 // prettier-ignore
 const OptionUpdate = () => import('../entities/option/option-update.vue');
@@ -256,31 +250,6 @@ export default new Router({
       path: '/report/:reportId/view',
       name: 'ReportView',
       component: ReportDetails,
-      meta: { authorities: ['ROLE_USER'] }
-    }
-    ,
-    {
-      path: '/player',
-      name: 'Player',
-      component: Player,
-      meta: { authorities: ['ROLE_USER'] }
-    },
-    {
-      path: '/player/new',
-      name: 'PlayerCreate',
-      component: PlayerUpdate,
-      meta: { authorities: ['ROLE_USER'] }
-    },
-    {
-      path: '/player/:playerId/edit',
-      name: 'PlayerEdit',
-      component: PlayerUpdate,
-      meta: { authorities: ['ROLE_USER'] }
-    },
-    {
-      path: '/player/:playerId/view',
-      name: 'PlayerView',
-      component: PlayerDetails,
       meta: { authorities: ['ROLE_USER'] }
     }
     ,

@@ -11,20 +11,10 @@
                         <span>{{report.name}}</span>
                     </dd>
                     <dt>
-                        <span v-text="$t('emosewaApp.report.quiz')">Quiz</span>
+                        <span v-text="$t('emosewaApp.report.user')">User</span>
                     </dt>
                     <dd>
-                        <div v-if="report.quiz">
-                            <router-link :to="{name: 'QuizView', params: {quizId: report.quiz.id}}">{{report.quiz.id}}</router-link>
-                        </div>
-                    </dd>
-                    <dt>
-                        <span v-text="$t('emosewaApp.report.player')">Player</span>
-                    </dt>
-                    <dd>
-                        <div v-if="report.player">
-                            <router-link :to="{name: 'PlayerView', params: {playerId: report.player.id}}">{{report.player.id}}</router-link>
-                        </div>
+                        {{report.user ? report.user.login : ''}}
                     </dd>
                 </dl>
                 <button type="submit"

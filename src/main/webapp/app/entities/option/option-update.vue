@@ -32,13 +32,6 @@
                             <option value="HARD" v-bind:label="$t('emosewaApp.Level.HARD')">HARD</option>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label class="form-control-label" v-bind:value="$t('emosewaApp.option.question')" for="option-question">Question</label>
-                        <select class="form-control" id="option-question" name="question" v-model="option.question">
-                            <option v-bind:value="null"></option>
-                            <option v-bind:value="option.question && questionOption.id === option.question.id ? option.question : questionOption" v-for="questionOption in questions" :key="questionOption.id">{{questionOption.id}}</option>
-                        </select>
-                    </div>
                 </div>
                 <div>
                     <button type="button" id="cancel-save" class="btn btn-secondary" v-on:click="previousState()">

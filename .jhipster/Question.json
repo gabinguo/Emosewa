@@ -24,17 +24,20 @@
             "ownerSide": true
         },
         {
-            "relationshipType": "one-to-many",
+            "relationshipType": "many-to-many",
             "otherEntityName": "option",
             "otherEntityRelationshipName": "question",
-            "relationshipName": "options"
+            "relationshipName": "options",
+            "otherEntityField": "description",
+            "ownerSide": true
         },
         {
-            "relationshipType": "many-to-one",
+            "relationshipType": "many-to-many",
             "otherEntityName": "quiz",
             "otherEntityRelationshipName": "questions",
             "relationshipName": "quiz",
-            "otherEntityField": "id"
+            "otherEntityField": "id",
+            "ownerSide": false
         }
     ],
     "changelogDate": "20200128160941",

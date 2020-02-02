@@ -1,11 +1,13 @@
 package com.emosewa.app.domain;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import com.emosewa.app.domain.enumeration.Level;
 
@@ -36,9 +38,10 @@ public class Option implements Serializable {
     @Column(name = "level")
     private Level level;
 
-    @ManyToOne
-    @JsonIgnoreProperties("options")
-    private Question question;
+    @ManyToMany(mappedBy = "options")
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    @JsonIgnore
+    private Set<Question> questions = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -101,17 +104,29 @@ public class Option implements Serializable {
         this.level = level;
     }
 
-    public Question getQuestion() {
-        return question;
+    public Set<Question> getQuestions() {
+        return questions;
     }
 
-    public Option question(Question question) {
-        this.question = question;
+    public Option questions(Set<Question> questions) {
+        this.questions = questions;
         return this;
     }
 
-    public void setQuestion(Question question) {
-        this.question = question;
+    public Option addQuestion(Question question) {
+        this.questions.add(question);
+        question.getOptions().add(this);
+        return this;
+    }
+
+    public Option removeQuestion(Question question) {
+        this.questions.remove(question);
+        question.getOptions().remove(this);
+        return this;
+    }
+
+    public void setQuestions(Set<Question> questions) {
+        this.questions = questions;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

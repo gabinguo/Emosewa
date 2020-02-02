@@ -18,6 +18,14 @@
                             <router-link :to="{name: 'QuizTypeView', params: {quizTypeId: quiz.type.id}}">{{quiz.type.id}}</router-link>
                         </div>
                     </dd>
+                    <dt>
+                        <span v-text="$t('emosewaApp.quiz.questions')">Questions</span>
+                    </dt>
+                    <dd>
+                        <span v-for="(questions, i) in quiz.questions" :key="questions.id">{{i > 0 ? ', ' : ''}}
+                            <router-link :to="{name: 'QuestionView', params: {questionId: questions.id}}">{{questions.description}}</router-link>
+                        </span>
+                    </dd>
                 </dl>
                 <button type="submit"
                         v-on:click.prevent="previousState()"

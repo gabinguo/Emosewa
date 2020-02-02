@@ -17,8 +17,7 @@
         "title": "Report"
       },
       "name": "Name",
-      "quiz": "Quiz",
-      "player": "Player"
+      "user": "User"
     }
   }
 }

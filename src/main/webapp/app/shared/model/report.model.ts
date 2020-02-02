@@ -1,13 +1,11 @@
-import { IQuiz } from '@/shared/model/quiz.model';
-import { IPlayer } from '@/shared/model/player.model';
+import { IUser } from '@/shared/model/user.model';
 
 export interface IReport {
   id?: number;
   name?: string;
-  quiz?: IQuiz;
-  player?: IPlayer;
+  user?: IUser;
 }
 
 export class Report implements IReport {
-  constructor(public id?: number, public name?: string, public quiz?: IQuiz, public player?: IPlayer) {}
+  constructor(public id?: number, public name?: string, public user?: IUser) {}
 }

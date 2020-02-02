@@ -24,13 +24,9 @@ public class Report implements Serializable {
     @Column(name = "name")
     private String name;
 
-    @OneToOne
-    @JoinColumn(unique = true)
-    private Quiz quiz;
-
     @ManyToOne
     @JsonIgnoreProperties("reports")
-    private Player player;
+    private User user;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -54,30 +50,17 @@ public class Report implements Serializable {
         this.name = name;
     }
 
-    public Quiz getQuiz() {
-        return quiz;
+    public User getUser() {
+        return user;
     }
 
-    public Report quiz(Quiz quiz) {
-        this.quiz = quiz;
+    public Report user(User user) {
+        this.user = user;
         return this;
     }
 
-    public void setQuiz(Quiz quiz) {
-        this.quiz = quiz;
-    }
-
-    public Player getPlayer() {
-        return player;
-    }
-
-    public Report player(Player player) {
-        this.player = player;
-        return this;
-    }
-
-    public void setPlayer(Player player) {
-        this.player = player;
+    public void setUser(User user) {
+        this.user = user;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

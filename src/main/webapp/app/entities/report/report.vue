@@ -26,8 +26,7 @@
                 <tr>
                     <th><span v-text="$t('global.field.id')">ID</span></th>
                     <th><span v-text="$t('emosewaApp.report.name')">Name</span></th>
-                    <th><span v-text="$t('emosewaApp.report.quiz')">Quiz</span></th>
-                    <th><span v-text="$t('emosewaApp.report.player')">Player</span></th>
+                    <th><span v-text="$t('emosewaApp.report.user')">User</span></th>
                     <th></th>
                 </tr>
                 </thead>
@@ -39,14 +38,7 @@
                     </td>
                     <td>{{report.name}}</td>
                     <td>
-                        <div v-if="report.quiz">
-                            <router-link :to="{name: 'QuizView', params: {quizId: report.quiz.id}}">{{report.quiz.id}}</router-link>
-                        </div>
-                    </td>
-                    <td>
-                        <div v-if="report.player">
-                            <router-link :to="{name: 'PlayerView', params: {playerId: report.player.id}}">{{report.player.id}}</router-link>
-                        </div>
+                        {{report.user ? report.user.login : ''}}
                     </td>
                     <td class="text-right">
                         <div class="btn-group">

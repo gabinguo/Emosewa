@@ -29,7 +29,6 @@
                     <th><span v-text="$t('emosewaApp.option.pictureURL')">Picture URL</span></th>
                     <th><span v-text="$t('emosewaApp.option.videoURL')">Video URL</span></th>
                     <th><span v-text="$t('emosewaApp.option.level')">Level</span></th>
-                    <th><span v-text="$t('emosewaApp.option.question')">Question</span></th>
                     <th></th>
                 </tr>
                 </thead>
@@ -43,11 +42,6 @@
                     <td>{{option.pictureURL}}</td>
                     <td>{{option.videoURL}}</td>
                     <td v-text="$t('emosewaApp.Level.' + option.level)">{{option.level}}</td>
-                    <td>
-                        <div v-if="option.question">
-                            <router-link :to="{name: 'QuestionView', params: {questionId: option.question.id}}">{{option.question.id}}</router-link>
-                        </div>
-                    </td>
                     <td class="text-right">
                         <div class="btn-group">
                             <router-link :to="{name: 'OptionView', params: {optionId: option.id}}" tag="button" class="btn btn-info btn-sm details">

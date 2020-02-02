@@ -14,11 +14,17 @@
                                  referencedColumnNames="id"
                                  referencedTableName="question_type"/>
 
-        <addForeignKeyConstraint baseColumnNames="quiz_id"
-                                 baseTableName="question"
-                                 constraintName="fk_question_quiz_id"
+        <addForeignKeyConstraint baseColumnNames="question_id"
+                                 baseTableName="question_options"
+                                 constraintName="fk_question_options_question_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="quiz"/>
+                                 referencedTableName="question"/>
 
+        <addForeignKeyConstraint baseColumnNames="options_id"
+                                 baseTableName="question_options"
+                                 constraintName="fk_question_options_options_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_option"/>
+        
     </changeSet>
 </databaseChangeLog>

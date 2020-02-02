@@ -44,6 +44,10 @@ export default class QuizUpdate extends Vue {
     });
   }
 
+  created(): void {
+    this.quiz.questions = [];
+  }
+
   public save(): void {
     this.isSaving = true;
     if (this.quiz.id) {
@@ -90,5 +94,16 @@ export default class QuizUpdate extends Vue {
       .then(res => {
         this.questions = res.data;
       });
+  }
+
+  public getSelected(selectedVals, option): any {
+    if (selectedVals) {
+      for (let i = 0; i < selectedVals.length; i++) {
+        if (option.id === selectedVals[i].id) {
+          return selectedVals[i];
+        }
+      }
+    }
+    return option;
   }
 }

@@ -9,7 +9,7 @@ export interface IQuestion {
   videoURL?: string;
   type?: IQuestionType;
   options?: IOption[];
-  quiz?: IQuiz;
+  quizzes?: IQuiz[];
 }
 
 export class Question implements IQuestion {
@@ -20,6 +20,6 @@ export class Question implements IQuestion {
     public videoURL?: string,
     public type?: IQuestionType,
     public options?: IOption[],
-    public quiz?: IQuiz
+    public quizzes?: IQuiz[]
   ) {}
 }

@@ -37,10 +37,6 @@
                         <font-awesome-icon icon="asterisk" />
                         <span v-text="$t('global.menu.entities.report')">Report</span>
                     </b-dropdown-item>
-                    <b-dropdown-item to="/player">
-                        <font-awesome-icon icon="asterisk" />
-                        <span v-text="$t('global.menu.entities.player')">Player</span>
-                    </b-dropdown-item>
                     <b-dropdown-item to="/option">
                         <font-awesome-icon icon="asterisk" />
                         <span v-text="$t('global.menu.entities.option')">Option</span>

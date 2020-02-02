@@ -12,7 +12,7 @@ export interface IOption {
   pictureURL?: string;
   videoURL?: string;
   level?: Level;
-  question?: IQuestion;
+  questions?: IQuestion[];
 }
 
 export class Option implements IOption {
@@ -22,6 +22,6 @@ export class Option implements IOption {
     public pictureURL?: string,
     public videoURL?: string,
     public level?: Level,
-    public question?: IQuestion
+    public questions?: IQuestion[]
   ) {}
 }

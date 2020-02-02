@@ -1,5 +1,5 @@
 package com.emosewa.app.domain;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -36,13 +36,17 @@ public class Question implements Serializable {
     @JoinColumn(unique = true)
     private QuestionType type;
 
-    @OneToMany(mappedBy = "question")
+    @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    @JoinTable(name = "question_options",
+               joinColumns = @JoinColumn(name = "question_id", referencedColumnName = "id"),
+               inverseJoinColumns = @JoinColumn(name = "options_id", referencedColumnName = "id"))
     private Set<Option> options = new HashSet<>();
 
-    @ManyToOne
-    @JsonIgnoreProperties("questions")
-    private Quiz quiz;
+    @ManyToMany(mappedBy = "questions")
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    @JsonIgnore
+    private Set<Quiz> quizzes = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -116,13 +120,13 @@ public class Question implements Serializable {
 
     public Question addOptions(Option option) {
         this.options.add(option);
-        option.setQuestion(this);
+        option.getQuestions().add(this);
         return this;
     }
 
     public Question removeOptions(Option option) {
         this.options.remove(option);
-        option.setQuestion(null);
+        option.getQuestions().remove(this);
         return this;
     }
 
@@ -130,17 +134,29 @@ public class Question implements Serializable {
         this.options = options;
     }
 
-    public Quiz getQuiz() {
-        return quiz;
+    public Set<Quiz> getQuizzes() {
+        return quizzes;
     }
 
-    public Question quiz(Quiz quiz) {
-        this.quiz = quiz;
+    public Question quizzes(Set<Quiz> quizzes) {
+        this.quizzes = quizzes;
         return this;
     }
 
-    public void setQuiz(Quiz quiz) {
-        this.quiz = quiz;
+    public Question addQuiz(Quiz quiz) {
+        this.quizzes.add(quiz);
+        quiz.getQuestions().add(this);
+        return this;
+    }
+
+    public Question removeQuiz(Quiz quiz) {
+        this.quizzes.remove(quiz);
+        quiz.getQuestions().remove(this);
+        return this;
+    }
+
+    public void setQuizzes(Set<Quiz> quizzes) {
+        this.quizzes = quizzes;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

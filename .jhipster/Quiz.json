@@ -16,10 +16,12 @@
             "ownerSide": true
         },
         {
-            "relationshipType": "one-to-many",
+            "relationshipType": "many-to-many",
             "otherEntityName": "question",
             "otherEntityRelationshipName": "quiz",
-            "relationshipName": "questions"
+            "relationshipName": "questions",
+            "otherEntityField": "description",
+            "ownerSide": true
         }
     ],
     "changelogDate": "20200128160942",

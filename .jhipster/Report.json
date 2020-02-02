@@ -8,19 +8,11 @@
     ],
     "relationships": [
         {
-            "relationshipType": "one-to-one",
-            "otherEntityName": "quiz",
-            "otherEntityRelationshipName": "report",
-            "relationshipName": "quiz",
-            "otherEntityField": "id",
-            "ownerSide": true
-        },
-        {
             "relationshipType": "many-to-one",
-            "otherEntityName": "player",
-            "otherEntityRelationshipName": "reports",
-            "relationshipName": "player",
-            "otherEntityField": "id"
+            "otherEntityName": "user",
+            "otherEntityRelationshipName": "report",
+            "relationshipName": "user",
+            "otherEntityField": "login"
         }
     ],
     "changelogDate": "20200128160943",

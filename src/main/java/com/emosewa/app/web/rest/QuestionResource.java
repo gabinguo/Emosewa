@@ -83,13 +83,13 @@ public class QuestionResource {
     /**
      * {@code GET  /questions} : get all the questions.
      *
-
+     * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many).
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of questions in body.
      */
     @GetMapping("/questions")
-    public List<Question> getAllQuestions() {
+    public List<Question> getAllQuestions(@RequestParam(required = false, defaultValue = "false") boolean eagerload) {
         log.debug("REST request to get all Questions");
-        return questionRepository.findAll();
+        return questionRepository.findAllWithEagerRelationships();
     }
 
     /**
@@ -101,7 +101,7 @@ public class QuestionResource {
     @GetMapping("/questions/{id}")
     public ResponseEntity<Question> getQuestion(@PathVariable Long id) {
         log.debug("REST request to get Question : {}", id);
-        Optional<Question> question = questionRepository.findById(id);
+        Optional<Question> question = questionRepository.findOneWithEagerRelationships(id);
         return ResponseUtil.wrapOrNotFound(question);
     }
 

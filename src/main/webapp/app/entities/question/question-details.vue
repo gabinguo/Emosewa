@@ -31,12 +31,12 @@
                         </div>
                     </dd>
                     <dt>
-                        <span v-text="$t('emosewaApp.question.quiz')">Quiz</span>
+                        <span v-text="$t('emosewaApp.question.options')">Options</span>
                     </dt>
                     <dd>
-                        <div v-if="question.quiz">
-                            <router-link :to="{name: 'QuizView', params: {quizId: question.quiz.id}}">{{question.quiz.id}}</router-link>
-                        </div>
+                        <span v-for="(options, i) in question.options" :key="options.id">{{i > 0 ? ', ' : ''}}
+                            <router-link :to="{name: 'OptionView', params: {optionId: options.id}}">{{options.description}}</router-link>
+                        </span>
                     </dd>
                 </dl>
                 <button type="submit"

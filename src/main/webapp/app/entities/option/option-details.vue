@@ -28,14 +28,6 @@
                     <dd>
                         <span v-text="$t('emosewaApp.Level.' + option.level)">{{option.level}}</span>
                     </dd>
-                    <dt>
-                        <span v-text="$t('emosewaApp.option.question')">Question</span>
-                    </dt>
-                    <dd>
-                        <div v-if="option.question">
-                            <router-link :to="{name: 'QuestionView', params: {questionId: option.question.id}}">{{option.question.id}}</router-link>
-                        </div>
-                    </dd>
                 </dl>
                 <button type="submit"
                         v-on:click.prevent="previousState()"

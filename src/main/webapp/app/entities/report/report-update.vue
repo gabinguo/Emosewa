@@ -15,17 +15,10 @@
                             :class="{'valid': !$v.report.name.$invalid, 'invalid': $v.report.name.$invalid }" v-model="$v.report.name.$model" />
                     </div>
                     <div class="form-group">
-                        <label class="form-control-label" v-text="$t('emosewaApp.report.quiz')" for="report-quiz">Quiz</label>
-                        <select class="form-control" id="report-quiz" name="quiz" v-model="report.quiz">
+                        <label class="form-control-label" v-bind:value="$t('emosewaApp.report.user')" for="report-user">User</label>
+                        <select class="form-control" id="report-user" name="user" v-model="report.user">
                             <option v-bind:value="null"></option>
-                            <option v-bind:value="report.quiz && quizOption.id === report.quiz.id ? report.quiz : quizOption" v-for="quizOption in quizzes" :key="quizOption.id">{{quizOption.id}}</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-control-label" v-bind:value="$t('emosewaApp.report.player')" for="report-player">Player</label>
-                        <select class="form-control" id="report-player" name="player" v-model="report.player">
-                            <option v-bind:value="null"></option>
-                            <option v-bind:value="report.player && playerOption.id === report.player.id ? report.player : playerOption" v-for="playerOption in players" :key="playerOption.id">{{playerOption.id}}</option>
+                            <option v-bind:value="report.user && userOption.id === report.user.id ? report.user : userOption" v-for="userOption in users" :key="userOption.id">{{userOption.login}}</option>
                         </select>
                     </div>
                 </div>

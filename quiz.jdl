@@ -12,13 +12,6 @@ entity Report{
 	name String
 }
 
-entity Player{
-	name String 
-    password String
-    email String
-}
-
-
 enum Level{
 	EASY, MEDIUM, HARD
 }
@@ -34,6 +27,7 @@ entity QuizType{
 	typeName String
 }
 
+
 entity QuestionType{
 	typeName String
 }
@@ -41,11 +35,14 @@ entity QuestionType{
 relationship OneToOne{
 	Question{type} to QuestionType,
     Quiz{type} to QuizType
-  	Report{quiz} to Quiz
 }
 
-relationship OneToMany{
-	Question{options} to Option
-    Quiz{questions} to Question
-    Player{reports} to Report
+
+relationship ManyToMany{
+	Question{options(description)} to Option{question}
+    Quiz{questions(description)} to Question{quiz}
+}
+
+relationship ManyToOne{
+	Report{user(login)} to User
 }

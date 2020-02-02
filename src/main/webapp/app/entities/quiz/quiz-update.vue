@@ -21,6 +21,12 @@
                             <option v-bind:value="quiz.type && quizTypeOption.id === quiz.type.id ? quiz.type : quizTypeOption" v-for="quizTypeOption in types" :key="quizTypeOption.id">{{quizTypeOption.id}}</option>
                         </select>
                     </div>
+                    <div class="form-group">
+                        <label v-text="$t('emosewaApp.quiz.questions')" for="quiz-questions">Questions</label>
+                        <select class="form-control" id="quiz-questions" multiple name="questions" v-model="quiz.questions">
+                            <option v-bind:value="getSelected(quiz.questions, questionOption)" v-for="questionOption in questions" :key="questionOption.id">{{questionOption.description}}</option>
+                        </select>
+                    </div>
                 </div>
                 <div>
                     <button type="button" id="cancel-save" class="btn btn-secondary" v-on:click="previousState()">

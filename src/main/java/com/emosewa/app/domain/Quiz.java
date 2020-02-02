@@ -29,8 +29,11 @@ public class Quiz implements Serializable {
     @JoinColumn(unique = true)
     private QuizType type;
 
-    @OneToMany(mappedBy = "quiz")
+    @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    @JoinTable(name = "quiz_questions",
+               joinColumns = @JoinColumn(name = "quiz_id", referencedColumnName = "id"),
+               inverseJoinColumns = @JoinColumn(name = "questions_id", referencedColumnName = "id"))
     private Set<Question> questions = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
@@ -79,13 +82,13 @@ public class Quiz implements Serializable {
 
     public Quiz addQuestions(Question question) {
         this.questions.add(question);
-        question.setQuiz(this);
+        question.getQuizzes().add(this);
         return this;
     }
 
     public Quiz removeQuestions(Question question) {
         this.questions.remove(question);
-        question.setQuiz(null);
+        question.getQuizzes().remove(this);
         return this;
     }
 

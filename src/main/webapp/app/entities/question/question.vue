@@ -29,7 +29,7 @@
                     <th><span v-text="$t('emosewaApp.question.pictureURL')">Picture URL</span></th>
                     <th><span v-text="$t('emosewaApp.question.videoURL')">Video URL</span></th>
                     <th><span v-text="$t('emosewaApp.question.type')">Type</span></th>
-                    <th><span v-text="$t('emosewaApp.question.quiz')">Quiz</span></th>
+                    <th><span v-text="$t('emosewaApp.question.options')">Options</span></th>
                     <th></th>
                 </tr>
                 </thead>
@@ -48,9 +48,9 @@
                         </div>
                     </td>
                     <td>
-                        <div v-if="question.quiz">
-                            <router-link :to="{name: 'QuizView', params: {quizId: question.quiz.id}}">{{question.quiz.id}}</router-link>
-                        </div>
+                        <span v-for="(options, i) in question.options" :key="options.id">{{i > 0 ? ', ' : ''}}
+                            <router-link class="form-control-static" :to="{name: 'OptionView', params: {optionId: options.id}}">{{options.description}}</router-link>
+                        </span>
                     </td>
                     <td class="text-right">
                         <div class="btn-group">
