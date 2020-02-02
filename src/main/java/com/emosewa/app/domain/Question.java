@@ -1,5 +1,6 @@
 package com.emosewa.app.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -32,8 +33,8 @@ public class Question implements Serializable {
     @Column(name = "video_url")
     private String videoURL;
 
-    @OneToOne
-    @JoinColumn(unique = true)
+    @ManyToOne
+    @JsonIgnoreProperties("questions")
     private QuestionType type;
 
     @ManyToMany

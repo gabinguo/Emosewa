@@ -16,12 +16,11 @@
     ],
     "relationships": [
         {
-            "relationshipType": "one-to-one",
+            "relationshipType": "many-to-one",
             "otherEntityName": "questionType",
             "otherEntityRelationshipName": "question",
             "relationshipName": "type",
-            "otherEntityField": "id",
-            "ownerSide": true
+            "otherEntityField": "typeName"
         },
         {
             "relationshipType": "many-to-many",

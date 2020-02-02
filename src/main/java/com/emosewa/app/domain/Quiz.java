@@ -1,4 +1,5 @@
 package com.emosewa.app.domain;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -25,8 +26,8 @@ public class Quiz implements Serializable {
     @Column(name = "name")
     private String name;
 
-    @OneToOne
-    @JoinColumn(unique = true)
+    @ManyToOne
+    @JsonIgnoreProperties("quizzes")
     private QuizType type;
 
     @ManyToMany

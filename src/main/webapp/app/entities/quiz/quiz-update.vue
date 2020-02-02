@@ -15,10 +15,10 @@
                             :class="{'valid': !$v.quiz.name.$invalid, 'invalid': $v.quiz.name.$invalid }" v-model="$v.quiz.name.$model" />
                     </div>
                     <div class="form-group">
-                        <label class="form-control-label" v-text="$t('emosewaApp.quiz.type')" for="quiz-type">Type</label>
+                        <label class="form-control-label" v-bind:value="$t('emosewaApp.quiz.type')" for="quiz-type">Type</label>
                         <select class="form-control" id="quiz-type" name="type" v-model="quiz.type">
                             <option v-bind:value="null"></option>
-                            <option v-bind:value="quiz.type && quizTypeOption.id === quiz.type.id ? quiz.type : quizTypeOption" v-for="quizTypeOption in types" :key="quizTypeOption.id">{{quizTypeOption.id}}</option>
+                            <option v-bind:value="quiz.type && quizTypeOption.id === quiz.type.id ? quiz.type : quizTypeOption" v-for="quizTypeOption in quizTypes" :key="quizTypeOption.id">{{quizTypeOption.typeName}}</option>
                         </select>
                     </div>
                     <div class="form-group">

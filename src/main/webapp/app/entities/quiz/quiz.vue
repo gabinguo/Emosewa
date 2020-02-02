@@ -40,7 +40,7 @@
                     <td>{{quiz.name}}</td>
                     <td>
                         <div v-if="quiz.type">
-                            <router-link :to="{name: 'QuizTypeView', params: {quizTypeId: quiz.type.id}}">{{quiz.type.id}}</router-link>
+                            <router-link :to="{name: 'QuizTypeView', params: {quizTypeId: quiz.type.id}}">{{quiz.type.typeName}}</router-link>
                         </div>
                     </td>
                     <td>

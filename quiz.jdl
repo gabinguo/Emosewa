@@ -32,11 +32,6 @@ entity QuestionType{
 	typeName String
 }
 
-relationship OneToOne{
-	Question{type} to QuestionType,
-    Quiz{type} to QuizType
-}
-
 
 relationship ManyToMany{
 	Question{options(description)} to Option{question}
@@ -45,4 +40,6 @@ relationship ManyToMany{
 
 relationship ManyToOne{
 	Report{user(login)} to User
+	Question{type(typeName)} to QuestionType
+    Quiz{type(typeName)} to QuizType
 }

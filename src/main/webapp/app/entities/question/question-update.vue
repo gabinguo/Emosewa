@@ -25,10 +25,10 @@
                             :class="{'valid': !$v.question.videoURL.$invalid, 'invalid': $v.question.videoURL.$invalid }" v-model="$v.question.videoURL.$model" />
                     </div>
                     <div class="form-group">
-                        <label class="form-control-label" v-text="$t('emosewaApp.question.type')" for="question-type">Type</label>
+                        <label class="form-control-label" v-bind:value="$t('emosewaApp.question.type')" for="question-type">Type</label>
                         <select class="form-control" id="question-type" name="type" v-model="question.type">
                             <option v-bind:value="null"></option>
-                            <option v-bind:value="question.type && questionTypeOption.id === question.type.id ? question.type : questionTypeOption" v-for="questionTypeOption in types" :key="questionTypeOption.id">{{questionTypeOption.id}}</option>
+                            <option v-bind:value="question.type && questionTypeOption.id === question.type.id ? question.type : questionTypeOption" v-for="questionTypeOption in questionTypes" :key="questionTypeOption.id">{{questionTypeOption.typeName}}</option>
                         </select>
                     </div>
                     <div class="form-group">

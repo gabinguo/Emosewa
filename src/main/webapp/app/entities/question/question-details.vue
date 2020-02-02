@@ -27,7 +27,7 @@
                     </dt>
                     <dd>
                         <div v-if="question.type">
-                            <router-link :to="{name: 'QuestionTypeView', params: {questionTypeId: question.type.id}}">{{question.type.id}}</router-link>
+                            <router-link :to="{name: 'QuestionTypeView', params: {questionTypeId: question.type.id}}">{{question.type.typeName}}</router-link>
                         </div>
                     </dd>
                     <dt>

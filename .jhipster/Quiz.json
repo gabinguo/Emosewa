@@ -8,12 +8,11 @@
     ],
     "relationships": [
         {
-            "relationshipType": "one-to-one",
+            "relationshipType": "many-to-one",
             "otherEntityName": "quizType",
             "otherEntityRelationshipName": "quiz",
             "relationshipName": "type",
-            "otherEntityField": "id",
-            "ownerSide": true
+            "otherEntityField": "typeName"
         },
         {
             "relationshipType": "many-to-many",
