@@ -1,0 +1,25 @@
+{
+  "emosewaApp": {
+    "choice": {
+      "home": {
+        "title": "Choices",
+        "createLabel": "创建新 Choice",
+        "createOrEditLabel": "创建或编辑 Choice",
+        "notFound": "No Choices found"
+      },
+      "created": "Choice {{ param }} 创建成功",
+      "updated": "Choice {{ param }} 更新成功",
+      "deleted": "Choice {{ param }} 删除成功",
+      "delete": {
+        "question": "你确定要删除 Choice {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "Choice"
+      },
+      "description": "Description",
+      "pictureURL": "Picture URL",
+      "videoURL": "Video URL",
+      "question": "Question"
+    }
+  }
+}

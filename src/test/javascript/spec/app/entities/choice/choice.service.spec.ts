@@ -3,8 +3,8 @@ import axios from 'axios';
 
 import * as config from '@/shared/config/config';
 import {} from '@/shared/date/filters';
-import QuestionService from '@/entities/question/question.service';
-import { Question, Level, CorrectNumber } from '@/shared/model/question.model';
+import ChoiceService from '@/entities/choice/choice.service';
+import { Choice } from '@/shared/model/choice.model';
 
 const mockedAxios: any = axios;
 jest.mock('axios', () => ({
@@ -15,13 +15,13 @@ jest.mock('axios', () => ({
 }));
 
 describe('Service Tests', () => {
-  describe('Question Service', () => {
-    let service: QuestionService;
+  describe('Choice Service', () => {
+    let service: ChoiceService;
     let elemDefault;
     beforeEach(() => {
-      service = new QuestionService();
+      service = new ChoiceService();
 
-      elemDefault = new Question(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', Level.EASY, CorrectNumber.A);
+      elemDefault = new Choice(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA');
     });
 
     describe('Service methods', () => {
@@ -33,7 +33,7 @@ describe('Service Tests', () => {
           expect(res).toMatchObject(elemDefault);
         });
       });
-      it('should create a Question', async () => {
+      it('should create a Choice', async () => {
         const returnedFromService = Object.assign(
           {
             id: 0
@@ -48,14 +48,12 @@ describe('Service Tests', () => {
         });
       });
 
-      it('should update a Question', async () => {
+      it('should update a Choice', async () => {
         const returnedFromService = Object.assign(
           {
             description: 'BBBBBB',
             pictureURL: 'BBBBBB',
-            videoURL: 'BBBBBB',
-            level: 'BBBBBB',
-            answer: 'BBBBBB'
+            videoURL: 'BBBBBB'
           },
           elemDefault
         );
@@ -67,14 +65,12 @@ describe('Service Tests', () => {
           expect(res).toMatchObject(expected);
         });
       });
-      it('should return a list of Question', async () => {
+      it('should return a list of Choice', async () => {
         const returnedFromService = Object.assign(
           {
             description: 'BBBBBB',
             pictureURL: 'BBBBBB',
-            videoURL: 'BBBBBB',
-            level: 'BBBBBB',
-            answer: 'BBBBBB'
+            videoURL: 'BBBBBB'
           },
           elemDefault
         );
@@ -84,7 +80,7 @@ describe('Service Tests', () => {
           expect(res).toContainEqual(expected);
         });
       });
-      it('should delete a Question', async () => {
+      it('should delete a Choice', async () => {
         mockedAxios.delete.mockReturnValue(Promise.resolve({ ok: true }));
         return service.delete(123).then(res => {
           expect(res.ok).toBeTruthy();

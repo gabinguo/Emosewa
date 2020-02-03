@@ -20,8 +20,9 @@
       "pictureURL": "Picture URL",
       "videoURL": "Video URL",
       "level": "Level",
+      "answer": "Answer",
       "type": "Type",
-      "options": "Options",
+      "choices": "Choices",
       "quiz": "Quiz"
     }
   }

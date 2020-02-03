@@ -47,6 +47,7 @@ export default class Home extends Vue {
   }
 
   public displayedQuizzes(): IQuiz[] {
+    this.modifyEmptyBtnNum();
     return this.paginate(this.quizzes);
   }
 

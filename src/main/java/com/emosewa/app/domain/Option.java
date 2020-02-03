@@ -23,20 +23,7 @@ public class Option implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "description")
-    private String description;
-
-    @Column(name = "picture_url")
-    private String pictureURL;
-
-    @Column(name = "video_url")
-    private String videoURL;
-
-    @ManyToMany(mappedBy = "options")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    @JsonIgnore
-    private Set<Question> questions = new HashSet<>();
-
+    
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -46,69 +33,9 @@ public class Option implements Serializable {
         this.id = id;
     }
 
-    public String getDescription() {
-        return description;
-    }
+    
 
-    public Option description(String description) {
-        this.description = description;
-        return this;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getPictureURL() {
-        return pictureURL;
-    }
-
-    public Option pictureURL(String pictureURL) {
-        this.pictureURL = pictureURL;
-        return this;
-    }
-
-    public void setPictureURL(String pictureURL) {
-        this.pictureURL = pictureURL;
-    }
-
-    public String getVideoURL() {
-        return videoURL;
-    }
-
-    public Option videoURL(String videoURL) {
-        this.videoURL = videoURL;
-        return this;
-    }
-
-    public void setVideoURL(String videoURL) {
-        this.videoURL = videoURL;
-    }
-
-    public Set<Question> getQuestions() {
-        return questions;
-    }
-
-    public Option questions(Set<Question> questions) {
-        this.questions = questions;
-        return this;
-    }
-
-    public Option addQuestion(Question question) {
-        this.questions.add(question);
-        question.getOptions().add(this);
-        return this;
-    }
-
-    public Option removeQuestion(Question question) {
-        this.questions.remove(question);
-        question.getOptions().remove(this);
-        return this;
-    }
-
-    public void setQuestions(Set<Question> questions) {
-        this.questions = questions;
-    }
+    
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
@@ -131,9 +58,6 @@ public class Option implements Serializable {
     public String toString() {
         return "Option{" +
             "id=" + getId() +
-            ", description='" + getDescription() + "'" +
-            ", pictureURL='" + getPictureURL() + "'" +
-            ", videoURL='" + getVideoURL() + "'" +
             "}";
     }
 }

@@ -62,6 +62,12 @@ const QuestionType = () => import('../entities/question-type/question-type.vue')
 const QuestionTypeUpdate = () => import('../entities/question-type/question-type-update.vue');
 // prettier-ignore
 const QuestionTypeDetails = () => import('../entities/question-type/question-type-details.vue');
+// prettier-ignore
+const Choice = () => import('../entities/choice/choice.vue');
+// prettier-ignore
+const ChoiceUpdate = () => import('../entities/choice/choice-update.vue');
+// prettier-ignore
+const ChoiceDetails = () => import('../entities/choice/choice-details.vue');
 // jhipster-needle-add-entity-to-router-import - JHipster will import entities to the router here
 
 Vue.use(Router);
@@ -333,6 +339,56 @@ export default new Router({
       path: '/question-type/:questionTypeId/view',
       name: 'QuestionTypeView',
       component: QuestionTypeDetails,
+      meta: { authorities: ['ROLE_USER'] }
+    }
+    ,
+    {
+      path: '/quiz',
+      name: 'Quiz',
+      component: Quiz,
+      meta: { authorities: ['ROLE_USER'] }
+    },
+    {
+      path: '/quiz/new',
+      name: 'QuizCreate',
+      component: QuizUpdate,
+      meta: { authorities: ['ROLE_USER'] }
+    },
+    {
+      path: '/quiz/:quizId/edit',
+      name: 'QuizEdit',
+      component: QuizUpdate,
+      meta: { authorities: ['ROLE_USER'] }
+    },
+    {
+      path: '/quiz/:quizId/view',
+      name: 'QuizView',
+      component: QuizDetails,
+      meta: { authorities: ['ROLE_USER'] }
+    }
+    ,
+    {
+      path: '/choice',
+      name: 'Choice',
+      component: Choice,
+      meta: { authorities: ['ROLE_USER'] }
+    },
+    {
+      path: '/choice/new',
+      name: 'ChoiceCreate',
+      component: ChoiceUpdate,
+      meta: { authorities: ['ROLE_USER'] }
+    },
+    {
+      path: '/choice/:choiceId/edit',
+      name: 'ChoiceEdit',
+      component: ChoiceUpdate,
+      meta: { authorities: ['ROLE_USER'] }
+    },
+    {
+      path: '/choice/:choiceId/view',
+      name: 'ChoiceView',
+      component: ChoiceDetails,
       meta: { authorities: ['ROLE_USER'] }
     }
     // jhipster-needle-add-entity-to-router - JHipster will add entities to the router here

@@ -2,13 +2,14 @@
 	<div class="container">
       <div v-if="quiz.questions.length == 0" id="loader"></div>
       <div v-if="quiz.questions.length != 0" id="game" class="justify-center flex-column">
+
         <div id="hud">
           <div id="hud-item">
-            <p id="progressText" class="hud-prefix">
+            <p id="progressText" class="hud-prefix" v-html="'Question' +  (indexQuestion+1) + '/' + (quiz.questions.length)">
               Question
             </p>
             <div id="progressBar">
-              <div id="progressBarFull"></div>
+              <div id="progressBarFull" :style="'width:' + (100 * (indexQuestion+1) / quiz.questions.length) + '%;'"></div>
             </div>
           </div>
           <div id="hud-item">
@@ -21,26 +22,15 @@
           </div>
         </div>
         <h2 id="question" v-html="quiz.questions[indexQuestion].description"></h2>
-        <div class="choice-container" v-for="option in quiz.questions[indexQuestion].options":key="option.id">
-            <p class="choice-prefix">A</p>
-            <p class="choice-text" v-html="option.description"></p>
-        </div> 
-        <div class="choice-container">
-            <p class="choice-prefix">A</p>
-            <p class="choice-text">Nanjing</p>
-        </div> 
-        <div class="choice-container">
-            <p class="choice-prefix">B</p>
-            <p class="choice-text">Beijing</p>
-        </div> 
-        <div class="choice-container">
-            <p class="choice-prefix">C</p>
-            <p class="choice-text">Tianjing</p>
-        </div> 
-        <div class="choice-container">
-            <p class="choice-prefix">D</p>
-            <p class="choice-text">Xi'an</p>
-        </div> 
+        <div class="choice-container" v-for="(option, $index) in quiz.questions[indexQuestion].choices":key="$index">
+            <p class="choice-prefix" v-if="$index == 0">A</p>
+            <p class="choice-prefix" v-if="$index == 1">B</p>
+            <p class="choice-prefix" v-if="$index == 2">C</p>
+            <p class="choice-prefix" v-if="$index == 3">D</p>
+            <p class="choice-prefix" v-if="$index == 4">E</p>
+            <p class="choice-prefix" v-if="$index == 5">F</p>
+            <p class="choice-text" v-html="option.description" :data-number=$index></p>
+        </div>
       </div>
     </div>
 </template>

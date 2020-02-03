@@ -5,15 +5,11 @@ import Router from 'vue-router';
 
 import AlertService from '@/shared/alert/alert.service';
 import * as config from '@/shared/config/config';
-import QuestionUpdateComponent from '@/entities/question/question-update.vue';
-import QuestionClass from '@/entities/question/question-update.component';
-import QuestionService from '@/entities/question/question.service';
-
-import QuestionTypeService from '@/entities/question-type/question-type.service';
-
+import ChoiceUpdateComponent from '@/entities/choice/choice-update.vue';
+import ChoiceClass from '@/entities/choice/choice-update.component';
 import ChoiceService from '@/entities/choice/choice.service';
 
-import QuizService from '@/entities/quiz/quiz.service';
+import QuestionService from '@/entities/question/question.service';
 
 const localVue = createLocalVue();
 
@@ -25,28 +21,24 @@ localVue.use(Router);
 localVue.component('font-awesome-icon', {});
 
 describe('Component Tests', () => {
-  describe('Question Management Update Component', () => {
-    let wrapper: Wrapper<QuestionClass>;
-    let comp: QuestionClass;
-    let questionServiceStub: SinonStubbedInstance<QuestionService>;
+  describe('Choice Management Update Component', () => {
+    let wrapper: Wrapper<ChoiceClass>;
+    let comp: ChoiceClass;
+    let choiceServiceStub: SinonStubbedInstance<ChoiceService>;
 
     beforeEach(() => {
-      questionServiceStub = sinon.createStubInstance<QuestionService>(QuestionService);
+      choiceServiceStub = sinon.createStubInstance<ChoiceService>(ChoiceService);
 
-      wrapper = shallowMount<QuestionClass>(QuestionUpdateComponent, {
+      wrapper = shallowMount<ChoiceClass>(ChoiceUpdateComponent, {
         store,
         i18n,
         localVue,
         router,
         provide: {
           alertService: () => new AlertService(store),
-          questionService: () => questionServiceStub,
+          choiceService: () => choiceServiceStub,
 
-          questionTypeService: () => new QuestionTypeService(),
-
-          choiceService: () => new ChoiceService(),
-
-          quizService: () => new QuizService()
+          questionService: () => new QuestionService()
         }
       });
       comp = wrapper.vm;
@@ -56,30 +48,30 @@ describe('Component Tests', () => {
       it('Should call update service on save for existing entity', async () => {
         // GIVEN
         const entity = { id: 123 };
-        comp.question = entity;
-        questionServiceStub.update.resolves(entity);
+        comp.choice = entity;
+        choiceServiceStub.update.resolves(entity);
 
         // WHEN
         comp.save();
         await comp.$nextTick();
 
         // THEN
-        expect(questionServiceStub.update.calledWith(entity)).toBeTruthy();
+        expect(choiceServiceStub.update.calledWith(entity)).toBeTruthy();
         expect(comp.isSaving).toEqual(false);
       });
 
       it('Should call create service on save for new entity', async () => {
         // GIVEN
         const entity = {};
-        comp.question = entity;
-        questionServiceStub.create.resolves(entity);
+        comp.choice = entity;
+        choiceServiceStub.create.resolves(entity);
 
         // WHEN
         comp.save();
         await comp.$nextTick();
 
         // THEN
-        expect(questionServiceStub.create.calledWith(entity)).toBeTruthy();
+        expect(choiceServiceStub.create.calledWith(entity)).toBeTruthy();
         expect(comp.isSaving).toEqual(false);
       });
     });

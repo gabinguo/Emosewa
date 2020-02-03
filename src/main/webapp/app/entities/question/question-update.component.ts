@@ -5,8 +5,8 @@ import { numeric, required, minLength, maxLength } from 'vuelidate/lib/validator
 import QuestionTypeService from '../question-type/question-type.service';
 import { IQuestionType } from '@/shared/model/question-type.model';
 
-import OptionService from '../option/option.service';
-import { IOption } from '@/shared/model/option.model';
+import ChoiceService from '../choice/choice.service';
+import { IChoice } from '@/shared/model/choice.model';
 
 import QuizService from '../quiz/quiz.service';
 import { IQuiz } from '@/shared/model/quiz.model';
@@ -20,7 +20,8 @@ const validations: any = {
     description: {},
     pictureURL: {},
     videoURL: {},
-    level: {}
+    level: {},
+    answer: {}
   }
 };
 
@@ -36,9 +37,9 @@ export default class QuestionUpdate extends Vue {
 
   public questionTypes: IQuestionType[] = [];
 
-  @Inject('optionService') private optionService: () => OptionService;
+  @Inject('choiceService') private choiceService: () => ChoiceService;
 
-  public options: IOption[] = [];
+  public choices: IChoice[] = [];
 
   @Inject('quizService') private quizService: () => QuizService;
 
@@ -55,7 +56,7 @@ export default class QuestionUpdate extends Vue {
   }
 
   created(): void {
-    this.question.options = [];
+    this.question.choices = [];
   }
 
   public save(): void {
@@ -99,10 +100,10 @@ export default class QuestionUpdate extends Vue {
       .then(res => {
         this.questionTypes = res.data;
       });
-    this.optionService()
+    this.choiceService()
       .retrieve()
       .then(res => {
-        this.options = res.data;
+        this.choices = res.data;
       });
     this.quizService()
       .retrieve()

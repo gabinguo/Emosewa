@@ -3,6 +3,7 @@ entity Question{
     pictureURL String 
     videoURL String
     level Level
+    answer CorrectNumber
 }
 
 entity Quiz{
@@ -17,7 +18,11 @@ enum Level{
 	EASY, MEDIUM, HARD
 }
 
-entity Option{
+enum CorrectNumber{
+	A, B, C, D, E
+}
+
+entity Choice{
 	description String
     pictureURL String
     videoURL String
@@ -33,8 +38,10 @@ entity QuestionType{
 }
 
 
+
+
 relationship ManyToMany{
-	Question{options(description)} to Option{question}
+	Question{choices(description)} to Choice{question}
     Quiz{questions(description)} to Question{quiz}
 }
 

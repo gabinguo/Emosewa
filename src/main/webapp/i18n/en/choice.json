@@ -1,0 +1,25 @@
+{
+  "emosewaApp": {
+    "choice": {
+      "home": {
+        "title": "Choices",
+        "createLabel": "Create a new Choice",
+        "createOrEditLabel": "Create or edit a Choice",
+        "notFound": "No Choices found"
+      },
+      "created": "A new Choice is created with identifier {{ param }}",
+      "updated": "A Choice is updated with identifier {{ param }}",
+      "deleted": "A Choice is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Choice {{ id }}?"
+      },
+      "detail": {
+        "title": "Choice"
+      },
+      "description": "Description",
+      "pictureURL": "Picture URL",
+      "videoURL": "Video URL",
+      "question": "Question"
+    }
+  }
+}

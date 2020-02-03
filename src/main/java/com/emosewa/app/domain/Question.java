@@ -1,6 +1,9 @@
 package com.emosewa.app.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import net.bytebuddy.agent.builder.AgentBuilder.InitializationStrategy.SelfInjection.Eager;
+
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -11,6 +14,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.emosewa.app.domain.enumeration.Level;
+
+import com.emosewa.app.domain.enumeration.CorrectNumber;
 
 /**
  * A Question.
@@ -39,16 +44,20 @@ public class Question implements Serializable {
     @Column(name = "level")
     private Level level;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "answer")
+    private CorrectNumber answer;
+
     @ManyToOne
     @JsonIgnoreProperties("questions")
     private QuestionType type;
 
-    @ManyToMany
+    @ManyToMany(fetch=FetchType.EAGER)
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    @JoinTable(name = "question_options",
+    @JoinTable(name = "question_choices",
                joinColumns = @JoinColumn(name = "question_id", referencedColumnName = "id"),
-               inverseJoinColumns = @JoinColumn(name = "options_id", referencedColumnName = "id"))
-    private Set<Option> options = new HashSet<>();
+               inverseJoinColumns = @JoinColumn(name = "choices_id", referencedColumnName = "id"))
+    private Set<Choice> choices = new HashSet<>();
 
     @ManyToMany(mappedBy = "questions")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -116,6 +125,19 @@ public class Question implements Serializable {
         this.level = level;
     }
 
+    public CorrectNumber getAnswer() {
+        return answer;
+    }
+
+    public Question answer(CorrectNumber answer) {
+        this.answer = answer;
+        return this;
+    }
+
+    public void setAnswer(CorrectNumber answer) {
+        this.answer = answer;
+    }
+
     public QuestionType getType() {
         return type;
     }
@@ -129,29 +151,29 @@ public class Question implements Serializable {
         this.type = questionType;
     }
 
-    public Set<Option> getOptions() {
-        return options;
+    public Set<Choice> getChoices() {
+        return choices;
     }
 
-    public Question options(Set<Option> options) {
-        this.options = options;
+    public Question choices(Set<Choice> choices) {
+        this.choices = choices;
         return this;
     }
 
-    public Question addOptions(Option option) {
-        this.options.add(option);
-        option.getQuestions().add(this);
+    public Question addChoices(Choice choice) {
+        this.choices.add(choice);
+        choice.getQuestions().add(this);
         return this;
     }
 
-    public Question removeOptions(Option option) {
-        this.options.remove(option);
-        option.getQuestions().remove(this);
+    public Question removeChoices(Choice choice) {
+        this.choices.remove(choice);
+        choice.getQuestions().remove(this);
         return this;
     }
 
-    public void setOptions(Set<Option> options) {
-        this.options = options;
+    public void setChoices(Set<Choice> choices) {
+        this.choices = choices;
     }
 
     public Set<Quiz> getQuizzes() {
@@ -204,6 +226,7 @@ public class Question implements Serializable {
             ", pictureURL='" + getPictureURL() + "'" +
             ", videoURL='" + getVideoURL() + "'" +
             ", level='" + getLevel() + "'" +
+            ", answer='" + getAnswer() + "'" +
             "}";
     }
 }

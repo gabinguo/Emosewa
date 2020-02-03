@@ -1,9 +1,14 @@
 import Component from 'vue-class-component';
 import { Inject, Vue, Watch } from 'vue-property-decorator';
 import QuizService from '@/entities/quiz/quiz.service';
+import QuestionService from '@/entities/question/question.service';
 import { IQuestion } from '@/shared/model/question.model';
 import { IQuiz } from '@/shared/model/quiz.model';
 import { IOption } from '@/shared/model/option.model';
+import Axios from 'axios';
+import { resolve } from 'url';
+
+const baseApiUrl = 'api/options';
 
 @Component
 export default class QuizQuestions extends Vue {
@@ -15,6 +20,8 @@ export default class QuizQuestions extends Vue {
   public indexQuestion = 0;
 
   @Inject('quizService') private quizService: () => QuizService;
+
+  public chooseOption(): void {}
 
   beforeRouteEnter(to, from, next) {
     next(vm => {
@@ -33,6 +40,4 @@ export default class QuizQuestions extends Vue {
   }
 
   public mounted(): void {}
-
-  public created(): void {}
 }
