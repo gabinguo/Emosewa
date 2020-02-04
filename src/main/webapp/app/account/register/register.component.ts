@@ -4,6 +4,7 @@ import { required, minLength, maxLength, helpers, email } from 'vuelidate/lib/va
 import LoginService from '@/account/login.service';
 import RegisterService from '@/account/register/register.service';
 import { EMAIL_ALREADY_USED_TYPE, LOGIN_ALREADY_USED_TYPE } from '@/constants';
+import UserManagementService from 'src/main/webapp/app/admin/user-management/user-management.service';
 
 const loginPattern = helpers.regex('alpha', /^[_.@A-Za-z0-9-]*$/);
 const validations: any = {
@@ -49,6 +50,7 @@ export default class Register extends Vue {
   public errorEmailExists = '';
   public errorUserExists = '';
   public success = false;
+
 
   public register(): void {
     if (this.registerAccount.password !== this.confirmPassword) {
