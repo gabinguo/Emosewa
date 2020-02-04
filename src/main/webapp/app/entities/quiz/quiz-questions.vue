@@ -20,9 +20,6 @@
           </div>
         </div>
         <h2 id="question" v-html="quiz.questions[indexQuestion].description"></h2>
-        <h3 class="badge badge-success" v-if="quiz.questions[indexQuestion].level == 'EASY'">{{quiz.questions[indexQuestion].level}}</h3>
-        <h3 class="badge badge-primary" v-if="quiz.questions[indexQuestion].level == 'MEDIUM'">{{quiz.questions[indexQuestion].level}}</h3>
-        <h3 class="badge badge-danger" v-if="quiz.questions[indexQuestion].level == 'HARD'">{{quiz.questions[indexQuestion].level}}</h3>
         <div class="choice-container" v-for="(option, $index) in quiz.questions[indexQuestion].choices":key="$index">
             <p class="choice-prefix" v-if="$index == 0">A</p>
             <p class="choice-prefix" v-if="$index == 1">B</p>
