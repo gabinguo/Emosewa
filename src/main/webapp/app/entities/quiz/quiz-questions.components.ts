@@ -18,10 +18,11 @@ export default class QuizQuestions extends Vue {
   public questionCounter = 0;
   public quiz: IQuiz = {};
   public indexQuestion = 0;
+  public optionChoosed = 0;
 
   @Inject('quizService') private quizService: () => QuizService;
 
-  public chooseOption(): void {}
+  public chooseOption(dataNumber): void {}
 
   beforeRouteEnter(to, from, next) {
     next(vm => {
@@ -40,4 +41,51 @@ export default class QuizQuestions extends Vue {
   }
 
   public mounted(): void {}
+
+  public choose(target): void {
+    var answerIndex = -1;
+    switch (this.quiz.questions[this.indexQuestion].answer) {
+      case 'A':
+        answerIndex = 0;
+        break;
+      case 'B':
+        answerIndex = 1;
+        break;
+      case 'C':
+        answerIndex = 2;
+        break;
+      case 'D':
+        answerIndex = 3;
+        break;
+      case 'E':
+        answerIndex = 4;
+        break;
+    }
+
+    if (target.dataset['number'] == answerIndex) {
+      console.log('data-number(option choosed): ' + target.dataset['number']);
+      console.log('answerIndex: ' + answerIndex);
+      // Check if it's the last question
+      if (this.indexQuestion + 1 == this.quiz.questions.length) {
+        // End function : page display TBD
+        this.score += 10;
+        alert('Final score: ' + this.score);
+      } else {
+        // If answer is correct
+        this.indexQuestion += 1;
+        this.score += 10;
+      }
+    } else {
+      console.log('data-number(option choosed): ' + target.dataset['number']);
+      console.log('answerIndex: ' + answerIndex);
+      // Check if it's the last question
+      if (this.indexQuestion + 1 == this.quiz.questions.length) {
+        // End function : page display TBD
+        alert('Final score: ' + this.score);
+      } else {
+        // If answer is incorrect
+        this.indexQuestion += 1;
+      }
+    }
+  }
 }

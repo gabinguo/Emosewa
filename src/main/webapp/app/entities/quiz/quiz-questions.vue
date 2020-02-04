@@ -16,9 +16,7 @@
             <p class="hud-prefix">
               Score
             </p>
-            <h1 class="hud-main-text" id="score">
-              0
-            </h1> 
+            <h1 class="hud-main-text" id="score" v-html="score"></h1> 
           </div>
         </div>
         <h2 id="question" v-html="quiz.questions[indexQuestion].description"></h2>
@@ -29,7 +27,7 @@
             <p class="choice-prefix" v-if="$index == 3">D</p>
             <p class="choice-prefix" v-if="$index == 4">E</p>
             <p class="choice-prefix" v-if="$index == 5">F</p>
-            <p class="choice-text" v-html="option.description" :data-number=$index></p>
+            <p class="choice-text" v-html="option.description" :data-number=$index @click="choose($event.target);"></p>
         </div>
       </div>
     </div>
