@@ -235,7 +235,7 @@ nav li.router-link-active .navbar-dropdown-menu {
 }
 
 .logo .logo-img {
-  height: 45px;
+  height: 50px;
   display: inline-block;
   vertical-align: middle;
   width: 70px;

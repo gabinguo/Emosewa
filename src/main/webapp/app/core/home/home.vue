@@ -1,7 +1,6 @@
 <template>
 
-    <div class="home row" style="margin: auto;">
-
+    <div style="margin: auto;">
         <div class="quizmenu-container" v-if="hasAnyAuthority('ROLE_USER')">
             <div id="quizzesmenu-title">
                 <span>Choose one quiz</span>
@@ -38,9 +37,22 @@
             
         </div>
 
-        <div class="alert alert-warning" v-if="!authenticated">
-                    <a class="alert-link" v-on:click="openLogin()">sign in</a>
+        <div class="v-header container" v-if="!authenticated">
+            <div class="header-content text-md-center">
+                <h1> Welcome to EMOSEWA QUIZ </h1>
+                <p>Develop your potential, Expand your horizons</p>
+                <div v-if="!authenticated">
+                    <a class="alert-link" v-on:click="openLogin()">Get Started!</a>
+                </div>
+            </div>
+                
+            
+            <div class="fullscreen-video-wrap">
+                <video autoplay muted src="./bg/videoplayback.mp4" loop=""></video>
+            </div>
+            <div class="header-overlay"></div>
         </div>
+        
     </div>
 </template>
 
@@ -55,6 +67,92 @@
     text-align: center;
     font-size: 30px;
     padding: 10px 0;
+}
+
+.fullscreen-video-wrap{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100vh;
+  overflow:hidden;
+}
+
+.fullscreen-video-wrap video{
+  min-height:100%;
+  min-width:100%;
+}
+
+.header-overlay{
+  height:100vh;
+  position: absolute;
+  top:0;
+  left:0;
+  width:100vw;
+  z-index:1;
+  background:#225470;
+  opacity:0.85;
+}
+.v-header{
+  height:100vh;
+  display:flex;
+  align-items:center;
+  color:#fff;
+}
+
+.container{
+  max-width:960px;
+  margin:auto;
+  text-align:center;
+}
+.alert-link{
+  position: relative;
+  padding:  20px 40px;
+  font-size: 1.4rem;
+  background-color: #00b3b4;
+  background-size: 46px 26px;  
+  color: white;
+  transition: all ease 0.3s;
+}
+
+.alert-link::after{
+  position: absolute;
+  top: 50%;
+  right: 0.6em;
+  transform: translateY(-50%);
+  content: "»";
+  font-size: 1.2em;
+  transition: all ease 0.3s;
+  opacity: 0;
+}
+
+.alert-link:hover{
+  padding: 20px 60px 20px 20px;
+}
+
+.alert-link:hover::after{
+  right: 1.2em;
+  opacity: 1;
+}
+
+
+.header-content{
+  z-index:2;
+}
+
+.header-content h1{
+  font-size:50px;
+  margin-bottom:0;
+  font-weight:bolder;
+  
+}
+
+.header-content p{
+  font-size:1.5rem;
+  display:block;
+  padding-bottom:2rem;
+  margin-top: 2%;
+  margin-bottom: 5%;
 }
 
 .quizmenu-container{
