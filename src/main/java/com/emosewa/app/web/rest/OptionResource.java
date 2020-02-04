@@ -1,23 +1,32 @@
 package com.emosewa.app.web.rest;
 
-import com.emosewa.app.domain.Option;
-import com.emosewa.app.repository.OptionRepository;
-import com.emosewa.app.web.rest.errors.BadRequestAlertException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.List;
+import java.util.Optional;
 
-import io.github.jhipster.web.util.HeaderUtil;
-import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.annotation.Transactional; 
-import org.springframework.web.bind.annotation.*;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.net.URI;
-import java.net.URISyntaxException;
+import com.emosewa.app.domain.Option;
+import com.emosewa.app.domain.Question;
+import com.emosewa.app.repository.OptionRepository;
+import com.emosewa.app.repository.QuestionRepository;
+import com.emosewa.app.web.rest.errors.BadRequestAlertException;
 
-import java.util.List;
-import java.util.Optional;
+import io.github.jhipster.web.util.HeaderUtil;
+import io.github.jhipster.web.util.ResponseUtil;
 
 /**
  * REST controller for managing {@link com.emosewa.app.domain.Option}.
@@ -35,6 +44,7 @@ public class OptionResource {
     private String applicationName;
 
     private final OptionRepository optionRepository;
+
 
     public OptionResource(OptionRepository optionRepository) {
         this.optionRepository = optionRepository;
@@ -91,7 +101,8 @@ public class OptionResource {
         log.debug("REST request to get all Options");
         return optionRepository.findAll();
     }
-
+    
+    
     /**
      * {@code GET  /options/:id} : get the "id" option.
      *

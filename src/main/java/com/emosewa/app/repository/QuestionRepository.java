@@ -15,14 +15,14 @@ import java.util.Optional;
 @Repository
 public interface QuestionRepository extends JpaRepository<Question, Long> {
 
-    @Query(value = "select distinct question from Question question left join fetch question.options",
+    @Query(value = "select distinct question from Question question left join fetch question.choices",
         countQuery = "select count(distinct question) from Question question")
     Page<Question> findAllWithEagerRelationships(Pageable pageable);
 
-    @Query("select distinct question from Question question left join fetch question.options")
+    @Query("select distinct question from Question question left join fetch question.choices")
     List<Question> findAllWithEagerRelationships();
 
-    @Query("select question from Question question left join fetch question.options where question.id =:id")
+    @Query("select question from Question question left join fetch question.choices where question.id =:id")
     Optional<Question> findOneWithEagerRelationships(@Param("id") Long id);
 
 }

@@ -13,6 +13,7 @@
         "option": "Option",
         "quizType": "Quiz Type",
         "questionType": "Question Type",
+        "choice": "Choice",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

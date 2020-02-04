@@ -17,6 +17,11 @@
             "fieldName": "level",
             "fieldType": "Level",
             "fieldValues": "EASY,MEDIUM,HARD"
+        },
+        {
+            "fieldName": "answer",
+            "fieldType": "CorrectNumber",
+            "fieldValues": "A,B,C,D,E"
         }
     ],
     "relationships": [
@@ -29,9 +34,9 @@
         },
         {
             "relationshipType": "many-to-many",
-            "otherEntityName": "option",
+            "otherEntityName": "choice",
             "otherEntityRelationshipName": "question",
-            "relationshipName": "options",
+            "relationshipName": "choices",
             "otherEntityField": "description",
             "ownerSide": true
         },

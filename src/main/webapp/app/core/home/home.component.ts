@@ -16,7 +16,6 @@ export default class Home extends Vue {
   public pages = [];
   public page = 1;
   public emptyBtnNum = 0;
-  //public isFirstTime = true;
 
   @Inject('loginService')
   private loginService: () => LoginService;
@@ -48,11 +47,7 @@ export default class Home extends Vue {
   }
 
   public displayedQuizzes(): IQuiz[] {
-   this. modifyEmptyBtnNum();
-  //  if(this.isFirstTime){
-  //    this.retrieveAllQuizs();
-  //   this.isFirstTime = false;
-  //  }
+    this.modifyEmptyBtnNum();
     return this.paginate(this.quizzes);
   }
 

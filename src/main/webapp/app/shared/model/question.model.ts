@@ -1,5 +1,5 @@
 import { IQuestionType } from '@/shared/model/question-type.model';
-import { IOption } from '@/shared/model/option.model';
+import { IChoice } from '@/shared/model/choice.model';
 import { IQuiz } from '@/shared/model/quiz.model';
 
 export const enum Level {
@@ -8,14 +8,23 @@ export const enum Level {
   HARD = 'HARD'
 }
 
+export const enum CorrectNumber {
+  A = 'A',
+  B = 'B',
+  C = 'C',
+  D = 'D',
+  E = 'E'
+}
+
 export interface IQuestion {
   id?: number;
   description?: string;
   pictureURL?: string;
   videoURL?: string;
   level?: Level;
+  answer?: CorrectNumber;
   type?: IQuestionType;
-  options?: IOption[];
+  choices?: IChoice[];
   quizzes?: IQuiz[];
 }
 
@@ -26,8 +35,9 @@ export class Question implements IQuestion {
     public pictureURL?: string,
     public videoURL?: string,
     public level?: Level,
+    public answer?: CorrectNumber,
     public type?: IQuestionType,
-    public options?: IOption[],
+    public choices?: IChoice[],
     public quizzes?: IQuiz[]
   ) {}
 }

@@ -83,10 +83,7 @@ public class OptionResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Option createEntity(EntityManager em) {
-        Option option = new Option()
-            .description(DEFAULT_DESCRIPTION)
-            .pictureURL(DEFAULT_PICTURE_URL)
-            .videoURL(DEFAULT_VIDEO_URL);
+        Option option = new Option();
         return option;
     }
     /**
@@ -96,10 +93,7 @@ public class OptionResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Option createUpdatedEntity(EntityManager em) {
-        Option option = new Option()
-            .description(UPDATED_DESCRIPTION)
-            .pictureURL(UPDATED_PICTURE_URL)
-            .videoURL(UPDATED_VIDEO_URL);
+        Option option = new Option();
         return option;
     }
 
@@ -123,9 +117,6 @@ public class OptionResourceIT {
         List<Option> optionList = optionRepository.findAll();
         assertThat(optionList).hasSize(databaseSizeBeforeCreate + 1);
         Option testOption = optionList.get(optionList.size() - 1);
-        assertThat(testOption.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
-        assertThat(testOption.getPictureURL()).isEqualTo(DEFAULT_PICTURE_URL);
-        assertThat(testOption.getVideoURL()).isEqualTo(DEFAULT_VIDEO_URL);
     }
 
     @Test
@@ -174,10 +165,7 @@ public class OptionResourceIT {
         restOptionMockMvc.perform(get("/api/options/{id}", option.getId()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$.id").value(option.getId().intValue()))
-            .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION))
-            .andExpect(jsonPath("$.pictureURL").value(DEFAULT_PICTURE_URL))
-            .andExpect(jsonPath("$.videoURL").value(DEFAULT_VIDEO_URL));
+            .andExpect(jsonPath("$.id").value(option.getId().intValue()));
     }
 
     @Test
@@ -200,10 +188,6 @@ public class OptionResourceIT {
         Option updatedOption = optionRepository.findById(option.getId()).get();
         // Disconnect from session so that the updates on updatedOption are not directly saved in db
         em.detach(updatedOption);
-        updatedOption
-            .description(UPDATED_DESCRIPTION)
-            .pictureURL(UPDATED_PICTURE_URL)
-            .videoURL(UPDATED_VIDEO_URL);
 
         restOptionMockMvc.perform(put("/api/options")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -214,9 +198,7 @@ public class OptionResourceIT {
         List<Option> optionList = optionRepository.findAll();
         assertThat(optionList).hasSize(databaseSizeBeforeUpdate);
         Option testOption = optionList.get(optionList.size() - 1);
-        assertThat(testOption.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
-        assertThat(testOption.getPictureURL()).isEqualTo(UPDATED_PICTURE_URL);
-        assertThat(testOption.getVideoURL()).isEqualTo(UPDATED_VIDEO_URL);
+
     }
 
     @Test

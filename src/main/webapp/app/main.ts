@@ -31,6 +31,7 @@ import ReportService from '@/entities/report/report.service';
 import OptionService from '@/entities/option/option.service';
 import QuizTypeService from '@/entities/quiz-type/quiz-type.service';
 import QuestionTypeService from '@/entities/question-type/question-type.service';
+import ChoiceService from '@/entities/choice/choice.service';
 // jhipster-needle-add-entity-service-to-main-import - JHipster will import entities services here
 
 Vue.config.productionTip = false;
@@ -94,6 +95,7 @@ new Vue({
     optionService: () => new OptionService(),
     quizTypeService: () => new QuizTypeService(),
     questionTypeService: () => new QuestionTypeService(),
+    choiceService: () => new ChoiceService(),
     // jhipster-needle-add-entity-service-to-main - JHipster will import entities services here
     accountService: () => accountService
   },

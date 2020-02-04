@@ -29,6 +29,12 @@
                         <span v-text="$t('emosewaApp.Level.' + question.level)">{{question.level}}</span>
                     </dd>
                     <dt>
+                        <span v-text="$t('emosewaApp.question.answer')">Answer</span>
+                    </dt>
+                    <dd>
+                        <span v-text="$t('emosewaApp.CorrectNumber.' + question.answer)">{{question.answer}}</span>
+                    </dd>
+                    <dt>
                         <span v-text="$t('emosewaApp.question.type')">Type</span>
                     </dt>
                     <dd>
@@ -37,11 +43,11 @@
                         </div>
                     </dd>
                     <dt>
-                        <span v-text="$t('emosewaApp.question.options')">Options</span>
+                        <span v-text="$t('emosewaApp.question.choices')">Choices</span>
                     </dt>
                     <dd>
-                        <span v-for="(options, i) in question.options" :key="options.id">{{i > 0 ? ', ' : ''}}
-                            <router-link :to="{name: 'OptionView', params: {optionId: options.id}}">{{options.description}}</router-link>
+                        <span v-for="(choices, i) in question.choices" :key="choices.id">{{i > 0 ? ', ' : ''}}
+                            <router-link :to="{name: 'ChoiceView', params: {choiceId: choices.id}}">{{choices.description}}</router-link>
                         </span>
                     </dd>
                 </dl>

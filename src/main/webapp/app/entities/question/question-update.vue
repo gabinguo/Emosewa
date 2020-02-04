@@ -33,6 +33,16 @@
                         </select>
                     </div>
                     <div class="form-group">
+                        <label class="form-control-label" v-text="$t('emosewaApp.question.answer')" for="question-answer">Answer</label>
+                        <select class="form-control" name="answer" :class="{'valid': !$v.question.answer.$invalid, 'invalid': $v.question.answer.$invalid }" v-model="$v.question.answer.$model" id="question-answer" >
+                            <option value="A" v-bind:label="$t('emosewaApp.CorrectNumber.A')">A</option>
+                            <option value="B" v-bind:label="$t('emosewaApp.CorrectNumber.B')">B</option>
+                            <option value="C" v-bind:label="$t('emosewaApp.CorrectNumber.C')">C</option>
+                            <option value="D" v-bind:label="$t('emosewaApp.CorrectNumber.D')">D</option>
+                            <option value="E" v-bind:label="$t('emosewaApp.CorrectNumber.E')">E</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label class="form-control-label" v-bind:value="$t('emosewaApp.question.type')" for="question-type">Type</label>
                         <select class="form-control" id="question-type" name="type" v-model="question.type">
                             <option v-bind:value="null"></option>
@@ -40,9 +50,9 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label v-text="$t('emosewaApp.question.options')" for="question-options">Options</label>
-                        <select class="form-control" id="question-options" multiple name="options" v-model="question.options">
-                            <option v-bind:value="getSelected(question.options, optionOption)" v-for="optionOption in options" :key="optionOption.id">{{optionOption.description}}</option>
+                        <label v-text="$t('emosewaApp.question.choices')" for="question-choices">Choices</label>
+                        <select class="form-control" id="question-choices" multiple name="choices" v-model="question.choices">
+                            <option v-bind:value="getSelected(question.choices, choiceOption)" v-for="choiceOption in choices" :key="choiceOption.id">{{choiceOption.description}}</option>
                         </select>
                     </div>
                 </div>

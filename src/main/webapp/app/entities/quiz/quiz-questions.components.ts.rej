@@ -1,0 +1,8 @@
+diff a/src/main/webapp/app/entities/quiz/quiz-questions.components.ts b/src/main/webapp/app/entities/quiz/quiz-questions.components.ts	(rejected hunks)
+@@ -26,4 +23,2 @@ export default class QuizQuestions extends Vue {
+-  
+-  public chooseOption() :void{
+-    
+-  }
++
++  public chooseOption(): void {}

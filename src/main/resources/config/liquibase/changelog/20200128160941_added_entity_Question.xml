@@ -28,6 +28,9 @@
             <column name="level" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
+            <column name="answer" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
             <column name="type_id" type="bigint">
                 <constraints nullable="true" />
             </column>
@@ -37,8 +40,8 @@
 
     <changeSet id="20200128160941-1-relations" author="jhipster">
 
-        <createTable tableName="question_options">
-            <column name="options_id" type="bigint">
+        <createTable tableName="question_choices">
+            <column name="choices_id" type="bigint">
                 <constraints nullable="false"/>
             </column>
             <column name="question_id" type="bigint">
@@ -46,7 +49,7 @@
             </column>
         </createTable>
 
-        <addPrimaryKey columnNames="question_id, options_id" tableName="question_options"/>
+        <addPrimaryKey columnNames="question_id, choices_id" tableName="question_choices"/>
         
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
@@ -69,6 +72,7 @@
             <column name="picture_url" type="string"/>
             <column name="video_url" type="string"/>
             <column name="level" type="string"/>
+            <column name="answer" type="string"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here, do not remove-->
         </loadData>
     </changeSet>

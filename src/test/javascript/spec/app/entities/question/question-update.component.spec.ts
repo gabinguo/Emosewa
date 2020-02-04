@@ -11,7 +11,7 @@ import QuestionService from '@/entities/question/question.service';
 
 import QuestionTypeService from '@/entities/question-type/question-type.service';
 
-import OptionService from '@/entities/option/option.service';
+import ChoiceService from '@/entities/choice/choice.service';
 
 import QuizService from '@/entities/quiz/quiz.service';
 
@@ -44,7 +44,7 @@ describe('Component Tests', () => {
 
           questionTypeService: () => new QuestionTypeService(),
 
-          optionService: () => new OptionService(),
+          choiceService: () => new ChoiceService(),
 
           quizService: () => new QuizService()
         }

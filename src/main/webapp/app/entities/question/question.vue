@@ -29,8 +29,9 @@
                     <th><span v-text="$t('emosewaApp.question.pictureURL')">Picture URL</span></th>
                     <th><span v-text="$t('emosewaApp.question.videoURL')">Video URL</span></th>
                     <th><span v-text="$t('emosewaApp.question.level')">Level</span></th>
+                    <th><span v-text="$t('emosewaApp.question.answer')">Answer</span></th>
                     <th><span v-text="$t('emosewaApp.question.type')">Type</span></th>
-                    <th><span v-text="$t('emosewaApp.question.options')">Options</span></th>
+                    <th><span v-text="$t('emosewaApp.question.choices')">Choices</span></th>
                     <th></th>
                 </tr>
                 </thead>
@@ -44,14 +45,15 @@
                     <td>{{question.pictureURL}}</td>
                     <td>{{question.videoURL}}</td>
                     <td v-text="$t('emosewaApp.Level.' + question.level)">{{question.level}}</td>
+                    <td v-text="$t('emosewaApp.CorrectNumber.' + question.answer)">{{question.answer}}</td>
                     <td>
                         <div v-if="question.type">
                             <router-link :to="{name: 'QuestionTypeView', params: {questionTypeId: question.type.id}}">{{question.type.typeName}}</router-link>
                         </div>
                     </td>
                     <td>
-                        <span v-for="(options, i) in question.options" :key="options.id">{{i > 0 ? ', ' : ''}}
-                            <router-link class="form-control-static" :to="{name: 'OptionView', params: {optionId: options.id}}">{{options.description}}</router-link>
+                        <span v-for="(choices, i) in question.choices" :key="choices.id">{{i > 0 ? ', ' : ''}}
+                            <router-link class="form-control-static" :to="{name: 'ChoiceView', params: {choiceId: choices.id}}">{{choices.description}}</router-link>
                         </span>
                     </td>
                     <td class="text-right">

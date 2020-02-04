@@ -3,8 +3,8 @@
     <div id="app-header">
       <jhi-navbar></jhi-navbar>
     </div>
-    <div class="container-fluid">
-      <div class="card jh-card">
+    <div class="container-fluid" style="padding-left:0;padding-right:0">
+      <div class="card jh-card" style="padding:0 1.5%; margin-top: 0;">
         <router-view></router-view>
       </div>
       <b-modal id="login-page" hide-footer lazy>

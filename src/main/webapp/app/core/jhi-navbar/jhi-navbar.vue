@@ -37,10 +37,6 @@
                         <font-awesome-icon icon="asterisk" />
                         <span v-text="$t('global.menu.entities.report')">Report</span>
                     </b-dropdown-item>
-                    <b-dropdown-item to="/option">
-                        <font-awesome-icon icon="asterisk" />
-                        <span v-text="$t('global.menu.entities.option')">Option</span>
-                    </b-dropdown-item>
                     <b-dropdown-item to="/quiz-type">
                         <font-awesome-icon icon="asterisk" />
                         <span v-text="$t('global.menu.entities.quizType')">QuizType</span>
@@ -48,6 +44,10 @@
                     <b-dropdown-item to="/question-type">
                         <font-awesome-icon icon="asterisk" />
                         <span v-text="$t('global.menu.entities.questionType')">QuestionType</span>
+                    </b-dropdown-item>
+                    <b-dropdown-item to="/choice">
+                        <font-awesome-icon icon="asterisk" />
+                        <span v-text="$t('global.menu.entities.choice')">Choice</span>
                     </b-dropdown-item>
                     <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
                 </b-nav-item-dropdown>
@@ -235,7 +235,7 @@ nav li.router-link-active .navbar-dropdown-menu {
 }
 
 .logo .logo-img {
-  height: 45px;
+  height: 50px;
   display: inline-block;
   vertical-align: middle;
   width: 70px;
