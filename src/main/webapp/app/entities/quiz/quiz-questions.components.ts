@@ -19,6 +19,7 @@ export default class QuizQuestions extends Vue {
   public quiz: IQuiz = {};
   public indexQuestion = 0;
   public optionChoosed = 0;
+  public classToApply = '';
 
   @Inject('quizService') private quizService: () => QuizService;
 
@@ -62,30 +63,38 @@ export default class QuizQuestions extends Vue {
         break;
     }
 
-    if (target.dataset['number'] == answerIndex) {
-      console.log('data-number(option choosed): ' + target.dataset['number']);
-      console.log('answerIndex: ' + answerIndex);
-      // Check if it's the last question
-      if (this.indexQuestion + 1 == this.quiz.questions.length) {
-        // End function : page display TBD
-        this.score += 10;
-        alert('Final score: ' + this.score);
+    this.classToApply = target.dataset['number'] == answerIndex ? 'correct' : 'incorrect';
+
+    target.parentElement.classList.add(this.classToApply);
+
+    setTimeout(() => {
+      target.parentElement.classList.remove(this.classToApply);
+
+      if (target.dataset['number'] == answerIndex) {
+        console.log('data-number(option choosed): ' + target.dataset['number']);
+        console.log('answerIndex: ' + answerIndex);
+        // Check if it's the last question
+        if (this.indexQuestion + 1 == this.quiz.questions.length) {
+          // End function : page display TBD
+          this.score += 10;
+          alert('Final score: ' + this.score);
+        } else {
+          // If answer is correct
+          this.indexQuestion += 1;
+          this.score += 10;
+        }
       } else {
-        // If answer is correct
-        this.indexQuestion += 1;
-        this.score += 10;
+        console.log('data-number(option choosed): ' + target.dataset['number']);
+        console.log('answerIndex: ' + answerIndex);
+        // Check if it's the last question
+        if (this.indexQuestion + 1 == this.quiz.questions.length) {
+          // End function : page display TBD
+          alert('Final score: ' + this.score);
+        } else {
+          // If answer is incorrect
+          this.indexQuestion += 1;
+        }
       }
-    } else {
-      console.log('data-number(option choosed): ' + target.dataset['number']);
-      console.log('answerIndex: ' + answerIndex);
-      // Check if it's the last question
-      if (this.indexQuestion + 1 == this.quiz.questions.length) {
-        // End function : page display TBD
-        alert('Final score: ' + this.score);
-      } else {
-        // If answer is incorrect
-        this.indexQuestion += 1;
-      }
-    }
+    }, 1000);
   }
 }
