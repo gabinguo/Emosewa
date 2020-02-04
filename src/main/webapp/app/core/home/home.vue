@@ -1,44 +1,53 @@
 <template>
 
-    <div style="margin: auto;">
-        <div class="quizmenu-container" v-if="hasAnyAuthority('ROLE_USER')">
-            <div id="quizzesmenu-title">
-                <span>Choose one quiz</span>
+    <div>
+          <div class="quizmenu-container" v-if="hasAnyAuthority('ROLE_USER')" style="margin:auto;text-align:center">
+            <div style="padding:0;height:30vh">
+              <img src="../../../content/images/quizpage.png" style="transform:scale(0.5)">
             </div>
-            <div id="quizzes-wraper" class="quiz-grid">
-                <router-link :to="{ name: 'QuizQuestions', params: {quizId: quiz.id}}" v-for="quiz in displayedQuizzes()":key="quiz.id">
-                    <button class="btn-quiz">
-                    Quiz{{quiz.id}}
-                    </button>
-                </router-link>
-                <button v-for="n in emptyBtnNum":key="n" class="btn-empty"></button>
+            <div class="bookshelf">
+		          <div class="page_shelf">
+			          <div class="row-1">
+                  <div class="loc">
+                    <router-link class="router-link" :to="{ name: 'QuizQuestions', params: {quizId: quiz.id}}" v-for="(quiz,$index) in displayedQuizzes()":key=$index>
+                      <button v-if="$index<3" class="sample btn-quiz">
+                        Quiz{{quiz.id}}
+                      </button>
+                    </router-link>
+                  </div>
+			          </div>
+                <div class="row-2">
+                   <div class="loc">
+                     <router-link class="router-link" :to="{ name: 'QuizQuestions', params: {quizId: quiz.id}}" v-for="(quiz,$index) in displayedQuizzes()":key=$index>
+                      <button v-if="$index>=3" class="sample btn-quiz">
+                        Quiz{{quiz.id}}
+                      </button>
+                    </router-link>
+                  </div>
+			          </div>
+
+                <div class="page-nav" style="margin-top:10%">
+                <nav aria-label="Page navigation">
+			            <ul class="pagination">
+				            <li class="page-item">
+					            <button type="btn btn-outline-secondary" class="page-link" v-if="page != 1" @click="page--"> < </button>
+				            </li>
+				            <li class="page-item">
+					            <button type="btn btn-outline-secondary" class="page-link" v-for="pageNumber in pages.slice(page-1, page+5)":key="pageNumber" @click="page = pageNumber"> {{pageNumber}}</button>
+				            </li>
+				            <li class="page-item">
+					            <button type="btn btn-outline-secondary" @click="page++" v-if="page < pages.length" class="page-link"> > </button>
+				            </li>
+			            </ul>
+		            </nav>	
+                </div> 
+                 
+              </div>
             </div>
-            <!-- <div class="btns-page">
-                <button class="btn-page"><</button>
-                <button class="btn-page">></button>
-            </div> -->
-            <div class="page-nav">
-            <nav aria-label="Page navigation">
-			<ul class="pagination">
-				<li class="page-item">
-					<button type="button" class="page-link" v-if="page != 1" @click="page--"> < </button>
-				</li>
+          </div>
 
-				<li class="page-item">
-					<button type="button" class="page-link" v-for="pageNumber in pages.slice(page-1, page+5)":key="pageNumber" @click="page = pageNumber"> {{pageNumber}}</button>
-				</li>
-
-				<li class="page-item">
-					<button type="button" @click="page++" v-if="page < pages.length" class="page-link"> > </button>
-				</li>
-			</ul>
-		    </nav>	
-            </div>
-            
-        </div>
-
-        <div class="v-header container" v-if="!authenticated">
-            <div class="header-content text-md-center">
+        <div class="v-header container" v-if="!authenticated" >
+            <div class="header-content text-md-center" style="margin:auto">
                 <h1> Welcome to EMOSEWA QUIZ </h1>
                 <p>Develop your potential, Expand your horizons</p>
                 <div v-if="!authenticated">
@@ -60,14 +69,6 @@
 </script>
 
 <style scoped>
-
-#quizzesmenu-title{
-    font-family: 'Times New Roman', Times, serif;
-    font-weight: bold;
-    text-align: center;
-    font-size: 30px;
-    padding: 10px 0;
-}
 
 .fullscreen-video-wrap{
   position:absolute;
@@ -159,58 +160,12 @@
     border-radius: 5px;
     box-shadow: 0 0 10px 2px;
     margin: auto;
-    padding: 30px;
-    width: 495px;
-    height: 555px;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("../../../content/images/bookshelf_bg.jpg");
 }
 
-.btn-quiz {
-    background-color: #0267A1;
-    border-radius: 10px;
-    padding: 5px 10px;
-    color: white;
-    outline: none;
-    width: 125px;
-    height: 100px;
-    margin: auto;   
-}
-
-.btn-empty{
-    background-color: white;
-    height: 100px;
-    width: 125px;
-    margin: auto;
-}
-
-.btn-quiz:hover {
-    border-color: black;
-    box-shadow: 0 0 10px 4px #333333;
-}
-
-.quiz-grid {
-    display: grid;
-    grid-template-columns: repeat(3, auto);
-    gap: 30px;
-    margin: 20px auto;
-}
-
-.btn-page{
-    background-color: white;
-    border-radius: 2px;
-    margin-left: 8px;
-    width: 35px;
-    color: black;
-}
-
-
-.btns-page{
-    text-align: right;
-}
-
-.btn-page:hover{
-    color: #ABABAB;
-    box-shadow: 0 0 10px 2px #333333;
-}
 
 button.page-link{
     font-size: 20px;
@@ -223,5 +178,96 @@ button.page-link{
 .page-nav{
     float: right;
 }
+
+.bookshelf-row{
+	display:none;
+}
+
+.bookshelf{
+	transition:all 1s;
+}
+
+.bookshelf{
+    display: flex;
+    margin-top: 5vh;
+    justify-content: center;
+}
+
+.bookshelf .page_shelf{
+	width:426px;
+	height:440px;
+}
+
+.bookshelf .page_shelf .row-1{
+	position:relative;
+	width:100%;
+	height:148px;
+}
+
+.bookshelf .page_shelf .row-2{
+    position:relative;
+    margin-top:20px;
+    width:100%;
+    height:164px;
+}
+
+.bookshelf .page_shelf .row-1:after {
+	background:url("../../../content/images/shelf.png");
+	background-size:100%;
+	background-repeat: no-repeat;
+	background-position:bottom left;
+	width:100%;
+	height:210px;
+	display:block;
+	content:"";
+}
+
+.bookshelf .page_shelf .row-2:after {
+  background:url("../../../content/images/shelf.png");
+	background-size:100%;
+	background-repeat: no-repeat;
+	background-position:bottom left;
+	width:100%;
+	height:216px;
+	display:block;
+	content:"";
+}
+
+.bookshelf .page_shelf .loc{
+	position:absolute;
+	bottom:0;
+	width:100%;
+}
+
+.bookshelf .page_shelf .loc .router-link >button{
+	width:33%;
+  height:100%;
+  background-size: contain;
+  float:left;
+  background-size: 90px 130px;
+  width:90px;
+  height:130px;
+  background-image:url("../../../content/images/quiz_book.png");
+  margin:0 6%;
+  text-align:center;
+}
+
+.bookshelf .sample,
+.bookshelf-row .sample{
+	margin:auto;
+	position: relative;
+	z-index:1;
+	box-shadow:2px 2px 5px rgba(0,0,0,0.6);
+	transition:transform 0.1s;
+  transform:translate(0, 0);
+  
+}
+
+.sample:hover{
+	z-index:2;
+	cursor: pointer;;
+	transform: scale3d(1.1, 1.1, 1) translate3d(0, -5px, 0);
+}
+
 
 </style>

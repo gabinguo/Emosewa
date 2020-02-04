@@ -7,7 +7,7 @@ import { IQuiz } from '@/shared/model/quiz.model';
 import { IOption } from '@/shared/model/option.model';
 import Axios from 'axios';
 import { resolve } from 'url';
-
+import './loading.scss';
 const baseApiUrl = 'api/options';
 
 @Component
