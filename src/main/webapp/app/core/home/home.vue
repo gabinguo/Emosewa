@@ -161,8 +161,8 @@
     box-shadow: 0 0 10px 2px;
     margin: auto;
     padding: 30px;
-    width: 495px;
-    height: 555px;
+    width: 100%;
+    height: 100%;
 }
 
 .btn-quiz {
