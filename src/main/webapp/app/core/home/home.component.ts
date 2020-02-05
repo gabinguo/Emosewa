@@ -12,7 +12,7 @@ export default class Home extends Vue {
   @Inject('quizService') private quizService: () => QuizService;
   public quizzes: IQuiz[] = [];
   public isFetching = false;
-  public perPage = 9;
+  public perPage = 6;
   public pages = [];
   public page = 1;
   public emptyBtnNum = 0;

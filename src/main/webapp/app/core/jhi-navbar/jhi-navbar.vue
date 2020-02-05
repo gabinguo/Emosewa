@@ -6,7 +6,7 @@
             </b-navbar-toggle>
             <b-navbar-brand class="logo float-left" b-link to="/">
                 <span class="logo-img"></span>
-                <span class="navbar-title">Emosewa-QuizApp</span>
+                <span style="font-size: 1.8rem;" class="navbar-title">Emosewa-QuizApp</span>
             </b-navbar-brand>
         </div>
         <b-collapse is-nav id="header-tabs">

@@ -12,4 +12,8 @@ import LoginForm from '@/account/login-form/login-form.vue';
     'jhi-footer': JhiFooter
   }
 })
-export default class App extends Vue {}
+export default class App extends Vue {
+  public get authenticated(): boolean {
+    return this.$store.getters.authenticated;
+  }
+}

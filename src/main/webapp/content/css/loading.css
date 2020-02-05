@@ -85,6 +85,10 @@
   }
 }
 
+:root {
+  font-size: 62.5%;
+}
+
 .app-loading {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   position: relative;

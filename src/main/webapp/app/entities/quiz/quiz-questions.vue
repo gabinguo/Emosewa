@@ -2,7 +2,21 @@
 <template>
 
 	<div class="container">
-      <div v-if="quiz.questions.length == 0" id="loader"></div>
+
+      <div v-if="quiz.questions.length == 0">
+        <div class="bookshelf_wrapper">
+          <ul class="books_list" style="margin:auto">
+            <li class="book_item first"></li>
+            <li class="book_item second"></li>
+            <li class="book_item third"></li>
+            <li class="book_item fourth"></li>
+            <li class="book_item fifth"></li>
+            <li class="book_item sixth"></li>
+          </ul>
+          <div class="shelf" style="margin:auto"></div>
+        </div>
+      </div>
+
       <div v-if="quiz.questions.length != 0" id="game" class="justify-center flex-column">
 
         <div id="hud">
@@ -45,6 +59,7 @@
 </script>
 
 <style scoped>
+
   * {
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
@@ -247,7 +262,7 @@
     width: 0%;
   }
   
-  /* LOADER */
+  /* LOADER
   #loader {
     border: 1.6rem solid white;
     border-radius: 50%;
@@ -264,7 +279,8 @@
     100% {
       transform: rotate(360deg);
     }
-  }
+  } */
+  
 
 </style>
 
