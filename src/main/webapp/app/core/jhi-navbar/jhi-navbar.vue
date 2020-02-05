@@ -163,6 +163,16 @@
   width: 40px;
   border-radius: 50%;
 }
+.jh-navbar .profile-image :hover::after {
+  content:'';
+  width: 120px;
+  border: 5px solid white;
+  background: url("../../../content/images/logo-jhipster.png") top center;
+  background-size: 100% auto;
+  position: absolute;
+  left: 0;
+  z-index: 99999;
+}
 
 .jh-navbar .dropdown-item.active,
 .jh-navbar .dropdown-item.active:focus,
