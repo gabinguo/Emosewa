@@ -3,6 +3,8 @@
 <head>
     <base href="/" />
     <meta charset="utf-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src *;img-src * 'self' data: https:; 
+    script-src 'self' 'unsafe-inline' 'unsafe-eval' *;style-src  'self' 'unsafe-inline' *">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>emosewa</title>
     <meta name="description" content="Description for emosewa">
@@ -12,6 +14,7 @@
     <link rel="shortcut icon" href="favicon.ico" />
     <link rel="manifest" href="manifest.webapp" />
     <link rel="stylesheet" href="content/css/loading.css">
+    <meta name="referrer" content="no-referrer" />
     <!-- jhipster-needle-add-resources-to-root - JHipster will add new resources here -->
 </head>
 <body>
