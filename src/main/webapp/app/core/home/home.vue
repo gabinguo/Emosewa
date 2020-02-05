@@ -57,7 +57,7 @@
                   
               
               <div class="fullscreen-video-wrap">
-                  <video playsinline autoplay muted src="./bg/videoplayback.mp4" loop=""></video>
+                  <video playsinline autoplay muted src="./bg/videoplayback.mp4" loop="true"></video>
               </div>
               <div class="header-overlay"></div>
           </div>
