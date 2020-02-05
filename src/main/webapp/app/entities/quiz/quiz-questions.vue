@@ -1,6 +1,4 @@
-
 <template>
-
 	<div class="container">
 
       <div v-if="quiz.questions.length == 0">
@@ -35,22 +33,21 @@
             <h1 class="hud-main-text" id="score" v-html="score"></h1> 
           </div>
         </div>
-        <h2 id="question" v-html="quiz.questions[indexQuestion].description"></h2>
-        <p>{{quiz.questions[indexQuestion].choices[0].pictureURL}}</p>  
+
+        <div style="width:100%;display:inline-block;margin-bottom:2%>
+          <h2 id="question" style="display:inline-block;" v-html="quiz.questions[indexQuestion].description"></h2>
+          <img v-bind:src="quiz.questions[indexQuestion].pictureURL" style="width: 30%;margin-left:20%;"></img>
+        </div>
+
         <div class="choice-container" v-for="(option, $index) in quiz.questions[indexQuestion].choices":key="$index">
-            <p class="choice-prefix" v-if="$index == 0">A<span><img :src="img1" alt="image" height="100" />></span></p>
+            <p class="choice-prefix" v-if="$index == 0">A</p>
             <p class="choice-prefix" v-if="$index == 1">B</p>
             <p class="choice-prefix" v-if="$index == 2">C</p>
             <p class="choice-prefix" v-if="$index == 3">D</p>
             <p class="choice-prefix" v-if="$index == 4">E</p>
             <p class="choice-prefix" v-if="$index == 5">F</p>
-            <p class="choice-text" v-html="option.description" :data-number=$index @click="choose($event.target);"> <span><img src="../../../content/images/logo-jhipster.png" alt="image" height="100" /></span> </p>
+            <p class="choice-text" v-html="option.description" :data-number=$index @click="choose($event.target);"></p>
         </div>
-
-        <!-- <div class="hover_img">
-          <a href="#">Show Image<span><img src="/content/images/logo-jhipster.png" alt="image" height="100" /></span></a>
-        </div> -->
-
       </div>
     </div>
 </template>
@@ -222,16 +219,6 @@
   .incorrect {
     background-color: #dc3545;
   }
-
-/* .hover_img a { position:relative; }
-.hover_img a span { position:absolute; display:none; z-index:99; }
-.hover_img a:hover span { display:block; } */
-
-.choice-container p { position:relative; }
-.choice-container p span { position:absolute; display:none; z-index:99; }
-.choice-container p:hover span { display:block; }
-
-
   
   /* HUD */
   
@@ -250,7 +237,7 @@
   }
   
   #progressBar {
-    width: 15rem;
+    width: 20rem;
     height: 4rem;
     border: 0.3rem solid #56a5eb;
     margin-top: 1.5rem;

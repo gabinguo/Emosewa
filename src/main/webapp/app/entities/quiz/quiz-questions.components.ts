@@ -97,12 +97,4 @@ export default class QuizQuestions extends Vue {
       }
     }, 1000);
   }
-
-  data() {
-    return {
-      imgName: 'logo-jhipster.png',
-      img1: '../../../content/images/logo-jhipster.png',
-    }
-  }
-
 }
