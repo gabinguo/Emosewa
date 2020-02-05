@@ -34,7 +34,7 @@
           </div>
         </div>
 
-        <div style="width:100%;display:inline-block;margin-bottom:2%>
+        <div style="width:100%;display:inline-block;margin-bottom:2%">
           <h2 id="question" style="display:inline-block;" v-html="quiz.questions[indexQuestion].description"></h2>
           <img v-bind:src="quiz.questions[indexQuestion].pictureURL" style="width: 30%;margin-left:20%;"></img>
         </div>

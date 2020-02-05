@@ -78,6 +78,7 @@ export default class QuizQuestions extends Vue {
           // End function : page display TBD
           this.score += 10;
           alert('Final score: ' + this.score);
+          this.$router.go(-1);
         } else {
           // If answer is correct
           this.indexQuestion += 1;
@@ -90,6 +91,7 @@ export default class QuizQuestions extends Vue {
         if (this.indexQuestion + 1 == this.quiz.questions.length) {
           // End function : page display TBD
           alert('Final score: ' + this.score);
+          this.$router.go(-1);
         } else {
           // If answer is incorrect
           this.indexQuestion += 1;
