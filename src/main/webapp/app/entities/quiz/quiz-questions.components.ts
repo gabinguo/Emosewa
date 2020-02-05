@@ -113,13 +113,29 @@ export default class QuizQuestions extends Vue {
         // Check if it's the last question
         if (this.indexQuestion + 1 == this.quiz.questions.length) {
           // End function : page display TBD
-          alert('Final score: ' + this.score);
+          Swal.fire({
+            title: "You've scored " + this.score + ' points !!!!',
+            width: 450,
+            confirmButtonText: 'Quiz menu',
+            padding: '3em',
+            background: "#fff url('../../../content/images/tree.png')",
+            backdrop: `
+              rgba(0,0,123,0.4)
+              url("../../../content/images/nyan-cat.gif")
+              left top
+              no-repeat
+            `
+          }).then(result => {
+            if (result.value) {
+              this.$router.go(-1);
+            }
+          });
           this.$router.go(-1);
         } else {
           // If answer is incorrect
           this.indexQuestion += 1;
         }
       }
-    }, 1000);
+    }, 500);
   }
 }

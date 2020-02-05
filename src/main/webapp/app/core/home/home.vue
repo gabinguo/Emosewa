@@ -11,7 +11,7 @@
                     <div class="loc">
                       <router-link class="router-link" :to="{ name: 'QuizQuestions', params: {quizId: quiz.id}}" v-for="(quiz,$index) in displayedQuizzes()":key=$index>
                         <button v-if="$index<3" class="sample btn-quiz">
-                          Quiz{{quiz.id}}
+                          Quiz<p v-html="$index+1 + (page-1)*6"></p>
                         </button>
                       </router-link>
                     </div>
@@ -20,7 +20,7 @@
                     <div class="loc">
                       <router-link class="router-link" :to="{ name: 'QuizQuestions', params: {quizId: quiz.id}}" v-for="(quiz,$index) in displayedQuizzes()":key=$index>
                         <button v-if="$index>=3" class="sample btn-quiz">
-                          Quiz{{quiz.id}}
+                          Quiz<p v-html="$index+1 + (page-1)*6"></p>
                         </button>
                       </router-link>
                     </div>
