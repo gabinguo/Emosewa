@@ -39,13 +39,13 @@
         </div>
 
         <div class="choice-container" v-for="(option, $index) in quiz.questions[indexQuestion].choices":key="$index">
-            <p class="choice-prefix" v-if="$index == 0">A</p>
-            <p class="choice-prefix" v-if="$index == 1">B</p>
+            <p class="choice-prefix" v-if="$index == 0">A</p> 
+            <p class="choice-prefix" v-if="$index == 1">B</p> 
             <p class="choice-prefix" v-if="$index == 2">C</p>
             <p class="choice-prefix" v-if="$index == 3">D</p>
             <p class="choice-prefix" v-if="$index == 4">E</p>
             <p class="choice-prefix" v-if="$index == 5">F</p>
-            <p class="choice-text" v-html="option.description" :data-number=$index @click="choose($event.target);"></p>
+            <p class="choice-text" v-html="option.description" :data-number=$index @click="choose($event.target);"><img v-bind:src="option.pictureURL" style="width: 30%;margin-left:20%;"><img></p>
         </div>
       </div>
     </div>
