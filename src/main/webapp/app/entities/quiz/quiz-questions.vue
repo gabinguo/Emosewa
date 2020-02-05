@@ -35,8 +35,13 @@
             <h1 class="hud-main-text" id="score" v-html="score"></h1> 
           </div>
         </div>
-        <h2 id="question" v-html="quiz.questions[indexQuestion].description"></h2>
-        <p>{{img1}}</p>  
+
+
+        <div style="width:100%;display:inline-block;margin-bottom:2%">
+          <h2 id="question" style="display:inline-block;" v-html="quiz.questions[indexQuestion].description"></h2>
+          <img v-bind:src="quiz.questions[indexQuestion].pictureURL" style="width: 30%;margin-left:20%;"></img>
+        </div>
+
         <div class="choice-container" v-for="(option, $index) in quiz.questions[indexQuestion].choices":key="$index">
             <p class="choice-prefix" v-if="$index == 0">A<span><img src="img1" alt="image" height="100" />></span></p>
             <p class="choice-prefix" v-if="$index == 1">B</p>
@@ -250,7 +255,7 @@
   }
   
   #progressBar {
-    width: 15rem;
+    width: 20rem;
     height: 4rem;
     border: 0.3rem solid #56a5eb;
     margin-top: 1.5rem;

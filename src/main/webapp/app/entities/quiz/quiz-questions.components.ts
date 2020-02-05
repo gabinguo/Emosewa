@@ -8,6 +8,7 @@ import { IOption } from '@/shared/model/option.model';
 import Axios from 'axios';
 import { resolve } from 'url';
 import './loading.scss';
+import Swal from 'sweetalert2';
 const baseApiUrl = 'api/options';
 
 @Component
@@ -81,7 +82,24 @@ export default class QuizQuestions extends Vue {
         if (this.indexQuestion + 1 == this.quiz.questions.length) {
           // End function : page display TBD
           this.score += 10;
-          alert('Final score: ' + this.score);
+          Swal.fire({
+            title: "You've scored " + this.score + ' points !!!!',
+            width: 450,
+            confirmButtonText: 'Quiz menu',
+            padding: '3em',
+            background: "#fff url('../../../content/images/tree.png')",
+            backdrop: `
+              rgba(0,0,123,0.4)
+              url("../../../content/images/nyan-cat.gif")
+              left top
+              no-repeat
+            `
+          }).then(result => {
+            if (result.value) {
+              this.$router.go(-1);
+            }
+          });
+          //this.$router.go(-1);
         } else {
           // If answer is correct
           this.indexQuestion += 1;
@@ -94,6 +112,7 @@ export default class QuizQuestions extends Vue {
         if (this.indexQuestion + 1 == this.quiz.questions.length) {
           // End function : page display TBD
           alert('Final score: ' + this.score);
+          this.$router.go(-1);
         } else {
           // If answer is incorrect
           this.indexQuestion += 1;
@@ -101,12 +120,4 @@ export default class QuizQuestions extends Vue {
       }
     }, 1000);
   }
-
-  data() {
-    return {
-      imgName: 'logo-jhipster.png',
-      img1: '../../../content/images/logo-jhipster.png',
-    }
-  }
-
 }
