@@ -43,10 +43,10 @@
         </div>
 
         <div class="choice-container" v-for="(option, $index) in quiz.questions[indexQuestion].choices":key="$index">
-            <p class="choice-prefix" v-if="$index == 0">A<span><img src="img1" alt="image" height="100" />></span></p>
-            <p class="choice-prefix" v-if="$index == 1">B</p>
-            <p class="choice-prefix" v-if="$index == 2">C</p>
-            <p class="choice-prefix" v-if="$index == 3">D</p>
+            <p class="choice-prefix" v-if="$index == 0">A<span><img v-bind:src="quiz.questions[indexQuestion].choices[0].pictureURL" alt="image" height="100" /></span></p>
+            <p class="choice-prefix" v-if="$index == 1">B<span><img v-bind:src="quiz.questions[indexQuestion].choices[1].pictureURL" alt="image" height="100" /></span></p>
+            <p class="choice-prefix" v-if="$index == 2">C<span><img v-bind:src="quiz.questions[indexQuestion].choices[2].pictureURL" alt="image" height="100" /></span></p>
+            <p class="choice-prefix" v-if="$index == 3">D<span><img v-bind:src="quiz.questions[indexQuestion].choices[3].pictureURL" alt="image" height="100" /></span></p>
             <p class="choice-prefix" v-if="$index == 4">E</p>
             <p class="choice-prefix" v-if="$index == 5">F</p>
             <p class="choice-text" v-html="option.description" :data-number=$index @click="choose($event.target);"> <span><img src="../../../content/images/logo-jhipster.png" alt="image" height="100" /></span> </p>
