@@ -86,6 +86,8 @@ export default class QuizQuestions extends Vue {
             title: "You've scored " + this.score + ' points !!!!',
             width: 450,
             confirmButtonText: 'Quiz menu',
+            imageUrl: "url('../../../content/images/tenor.gif')",
+            imageAlt: 'Custom image',
             padding: '3em',
             background: "#fff url('../../../content/images/tree.png')",
             backdrop: `

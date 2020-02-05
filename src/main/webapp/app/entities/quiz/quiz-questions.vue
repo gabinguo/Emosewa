@@ -37,16 +37,19 @@
         </div>
 
 
-        <div style="width:100%;display:inline-block;margin-bottom:2%">
+        <div style="width:100%;display:inline-block;">
           <h2 id="question" style="display:inline-block;" v-html="quiz.questions[indexQuestion].description"></h2>
-          <img v-bind:src="quiz.questions[indexQuestion].pictureURL" style="width: 30%;margin-left:20%;"></img>
+          <img v-if="quiz.questions[indexQuestion].pictureURL != null" v-bind:src="quiz.questions[indexQuestion].pictureURL" style="width: 30%;margin-left:20%;"></img>
+          
         </div>
-
+        <div v-if="quiz.questions[indexQuestion].videoURL != null" class="video-box">
+          <video playsinline autoplay muted v-bind:src="quiz.questions[indexQuestion].videoURL" loop="" style="width: 30%;display:inline-block;"></video>
+        </div>
         <div class="choice-container" v-for="(option, $index) in quiz.questions[indexQuestion].choices":key="$index">
-            <p class="choice-prefix" v-if="$index == 0">A<span><img v-bind:src="quiz.questions[indexQuestion].choices[0].pictureURL" alt="image" height="100" /></span></p>
-            <p class="choice-prefix" v-if="$index == 1">B<span><img v-bind:src="quiz.questions[indexQuestion].choices[1].pictureURL" alt="image" height="100" /></span></p>
-            <p class="choice-prefix" v-if="$index == 2">C<span><img v-bind:src="quiz.questions[indexQuestion].choices[2].pictureURL" alt="image" height="100" /></span></p>
-            <p class="choice-prefix" v-if="$index == 3">D<span><img v-bind:src="quiz.questions[indexQuestion].choices[3].pictureURL" alt="image" height="100" /></span></p>
+            <p class="choice-prefix" v-if="$index == 0">A<span><img v-if="quiz.questions[indexQuestion].choices[0].pictureURL != null" v-bind:src="quiz.questions[indexQuestion].choices[0].pictureURL" alt="image" height="100" /></span></p>
+            <p class="choice-prefix" v-if="$index == 1">B<span><img v-if="quiz.questions[indexQuestion].choices[0].pictureURL != null" v-bind:src="quiz.questions[indexQuestion].choices[1].pictureURL" alt="image" height="100" /></span></p>
+            <p class="choice-prefix" v-if="$index == 2">C<span><img v-if="quiz.questions[indexQuestion].choices[0].pictureURL != null" v-bind:src="quiz.questions[indexQuestion].choices[2].pictureURL" alt="image" height="100" /></span></p>
+            <p class="choice-prefix" v-if="$index == 3">D<span><img v-if="quiz.questions[indexQuestion].choices[0].pictureURL != null" v-bind:src="quiz.questions[indexQuestion].choices[3].pictureURL" alt="image" height="100" /></span></p>
             <p class="choice-prefix" v-if="$index == 4">E</p>
             <p class="choice-prefix" v-if="$index == 5">F</p>
             <p class="choice-text" v-html="option.description" :data-number=$index @click="choose($event.target);"> <span><img src="../../../content/images/logo-jhipster.png" alt="image" height="100" /></span> </p>
@@ -234,7 +237,7 @@
 
 .choice-container p { position:relative; }
 .choice-container p span { position:absolute; display:none; z-index:99; }
-.choice-container p:hover span { display:block; }
+.choice-container p:hover span { display:block; pisition:fixed; right: 5%; bottom: 5rem;}
 
 
   
@@ -265,6 +268,10 @@
     height: 3.4rem;
     background-color: #56a5eb;
     width: 0%;
+  }
+  
+  .video-box{
+    text-align: center;
   }
   
   /* LOADER

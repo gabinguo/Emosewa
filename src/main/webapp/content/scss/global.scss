@@ -258,4 +258,16 @@ ui bootstrap tweaks
   white-space: nowrap;
 }
 
+.modal-content {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.modal-header {
+  border: none;
+}
+
+.modal-title {
+  font-size: large;
+}
+
 /* jhipster-needle-scss-add-main JHipster will add new css style */
