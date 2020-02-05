@@ -36,9 +36,9 @@
           </div>
         </div>
         <h2 id="question" v-html="quiz.questions[indexQuestion].description"></h2>
-        <p>{{quiz.questions[indexQuestion].choices[0].pictureURL}}</p>  
+        <p>{{img1}}</p>  
         <div class="choice-container" v-for="(option, $index) in quiz.questions[indexQuestion].choices":key="$index">
-            <p class="choice-prefix" v-if="$index == 0">A<span><img :src="img1" alt="image" height="100" />></span></p>
+            <p class="choice-prefix" v-if="$index == 0">A<span><img src="img1" alt="image" height="100" />></span></p>
             <p class="choice-prefix" v-if="$index == 1">B</p>
             <p class="choice-prefix" v-if="$index == 2">C</p>
             <p class="choice-prefix" v-if="$index == 3">D</p>

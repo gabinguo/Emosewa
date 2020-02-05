@@ -20,6 +20,7 @@ export default class QuizQuestions extends Vue {
   public indexQuestion = 0;
   public optionChoosed = 0;
   public classToApply = '';
+  public pictureURL = '../../../content/images/logo-jhipster.png';
 
   @Inject('quizService') private quizService: () => QuizService;
 
@@ -38,10 +39,13 @@ export default class QuizQuestions extends Vue {
       .find(quizId)
       .then(res => {
         this.quiz = res;
+        //this.pictureURL = this.quiz.questions[this.indexQuestion].choices[0].pictureURL;
       });
   }
 
-  public mounted(): void {}
+  public mounted(): void {
+    //this.pictureURL = this.quiz.questions[this.indexQuestion].choices[0].pictureURL;
+  }
 
   public choose(target): void {
     var answerIndex = -1;
