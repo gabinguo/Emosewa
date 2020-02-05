@@ -30,13 +30,13 @@
                   <nav aria-label="Page navigation">
                     <ul class="pagination">
                       <li class="page-item">
-                        <button type="btn btn-outline-secondary" class="page-link" v-if="page != 1" @click="page--"> < </button>
+                        <button type="btn btn-outline-secondary" style= "margin-right:2px"class="page-link" v-if="page != 1" @click="page--"> < </button>
                       </li>
                       <li class="page-item">
-                        <button type="btn btn-outline-secondary" class="page-link" v-for="pageNumber in pages.slice(page-1, page+5)":key="pageNumber" @click="page = pageNumber"> {{pageNumber}}</button>
+                        <button type="btn btn-outline-secondary" style= "margin-right:2px"class="page-link" v-for="pageNumber in pages.slice(page-1, page+5)":key="pageNumber" @click="page = pageNumber"> {{pageNumber}}</button>
                       </li>
                       <li class="page-item">
-                        <button type="btn btn-outline-secondary" @click="page++" v-if="page < pages.length" class="page-link"> > </button>
+                        <button type="btn btn-outline-secondary" style= "margin-right:2px" @click="page++" v-if="page < pages.length" class="page-link"> > </button>
                       </li>
                     </ul>
                   </nav>	
@@ -69,6 +69,59 @@
   </script>
 
   <style scoped>
+.page-link{
+  position: relative;
+  background: peru;
+  border: none;
+  padding: 15px 24px;
+  outline: none;
+  box-shadow: -6px 6px 0 hsl(16, 100%, 30%);
+}
+  .page-link::before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 0;
+  left: -6px;
+  border: 6px solid transparent;
+  border-right: 6px solid hsl(16, 100%, 30%);
+  border-left-width: 0px;
+}
+
+.page-link::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  position: absolute;
+  bottom: -6px;
+  right: 0;
+  border: 6px solid transparent;
+  border-top: 6px solid hsl(16, 100%, 30%);
+  border-bottom-width: 0px;
+}
+
+.page-link:active {
+  background: hsl(16, 100%, 40%);
+  top: 3px;
+  left: -3px;
+  box-shadow: -3px 3px 0 hsl(16, 100%, 30%);
+}
+.page-link:active::before {
+  border: 3px solid transparent;
+  border-right: 3px solid hsl(16, 100%, 30%);
+  border-left-width: 0px;
+  left: -3px;
+}
+
+.page-link:active::after {
+  border: 3px solid transparent;
+  border-top: 3px solid hsl(16, 100%, 30%);
+  border-bottom-width: 0px;
+  bottom: -3px;
+}
 
   .fullscreen-video-wrap{
     position:absolute;
@@ -169,9 +222,8 @@
 
   button.page-link{
       font-size: 20px;
-      color: #29b3ed;
+      color: #ffffff;
       font-weight: 500;
-
       display: inline-block;
   }
 
